@@ -1,0 +1,1962 @@
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_meta_configecc
+  20              		.section	.cyconfigecc,"a",%progbits
+  21              		.align	2
+  22              		.type	cy_meta_configecc, %object
+  23              		.size	cy_meta_configecc, 1380
+  24              	cy_meta_configecc:
+  25 0000 01       		.byte	1
+  26 0001 45       		.byte	69
+  27 0002 00       		.byte	0
+  28 0003 40       		.byte	64
+  29 0004 03       		.byte	3
+  30 0005 52       		.byte	82
+  31 0006 00       		.byte	0
+  32 0007 40       		.byte	64
+  33 0008 04       		.byte	4
+  34 0009 64       		.byte	100
+  35 000a 00       		.byte	0
+  36 000b 40       		.byte	64
+  37 000c 01       		.byte	1
+  38 000d 05       		.byte	5
+  39 000e 01       		.byte	1
+  40 000f 40       		.byte	64
+  41 0010 59       		.byte	89
+  42 0011 08       		.byte	8
+  43 0012 01       		.byte	1
+  44 0013 40       		.byte	64
+  45 0014 3F       		.byte	63
+  46 0015 09       		.byte	9
+  47 0016 01       		.byte	1
+  48 0017 40       		.byte	64
+  49 0018 44       		.byte	68
+  50 0019 0A       		.byte	10
+  51 001a 01       		.byte	1
+  52 001b 40       		.byte	64
+  53 001c 47       		.byte	71
+  54 001d 0B       		.byte	11
+  55 001e 01       		.byte	1
+  56 001f 40       		.byte	64
+  57 0020 5E       		.byte	94
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 2
+
+
+  58 0021 0C       		.byte	12
+  59 0022 01       		.byte	1
+  60 0023 40       		.byte	64
+  61 0024 43       		.byte	67
+  62 0025 0D       		.byte	13
+  63 0026 01       		.byte	1
+  64 0027 40       		.byte	64
+  65 0028 4D       		.byte	77
+  66 0029 0E       		.byte	14
+  67 002a 01       		.byte	1
+  68 002b 40       		.byte	64
+  69 002c 2F       		.byte	47
+  70 002d 0F       		.byte	15
+  71 002e 01       		.byte	1
+  72 002f 40       		.byte	64
+  73 0030 01       		.byte	1
+  74 0031 19       		.byte	25
+  75 0032 01       		.byte	1
+  76 0033 40       		.byte	64
+  77 0034 03       		.byte	3
+  78 0035 40       		.byte	64
+  79 0036 01       		.byte	1
+  80 0037 40       		.byte	64
+  81 0038 02       		.byte	2
+  82 0039 41       		.byte	65
+  83 003a 01       		.byte	1
+  84 003b 40       		.byte	64
+  85 003c 04       		.byte	4
+  86 003d 42       		.byte	66
+  87 003e 01       		.byte	1
+  88 003f 40       		.byte	64
+  89 0040 01       		.byte	1
+  90 0041 43       		.byte	67
+  91 0042 01       		.byte	1
+  92 0043 40       		.byte	64
+  93 0044 0A       		.byte	10
+  94 0045 45       		.byte	69
+  95 0046 01       		.byte	1
+  96 0047 40       		.byte	64
+  97 0048 07       		.byte	7
+  98 0049 46       		.byte	70
+  99 004a 01       		.byte	1
+ 100 004b 40       		.byte	64
+ 101 004c 03       		.byte	3
+ 102 004d 48       		.byte	72
+ 103 004e 01       		.byte	1
+ 104 004f 40       		.byte	64
+ 105 0050 03       		.byte	3
+ 106 0051 50       		.byte	80
+ 107 0052 01       		.byte	1
+ 108 0053 40       		.byte	64
+ 109 0054 01       		.byte	1
+ 110 0055 51       		.byte	81
+ 111 0056 01       		.byte	1
+ 112 0057 40       		.byte	64
+ 113 0058 35       		.byte	53
+ 114 0059 02       		.byte	2
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 3
+
+
+ 115 005a 10       		.byte	16
+ 116 005b 0C       		.byte	12
+ 117 005c 11       		.byte	17
+ 118 005d 06       		.byte	6
+ 119 005e 14       		.byte	20
+ 120 005f 01       		.byte	1
+ 121 0060 88       		.byte	-120
+ 122 0061 0F       		.byte	15
+ 123 0062 8A       		.byte	-118
+ 124 0063 38       		.byte	56
+ 125 0064 8D       		.byte	-115
+ 126 0065 72       		.byte	114
+ 127 0066 8F       		.byte	-113
+ 128 0067 0F       		.byte	15
+ 129 0068 E2       		.byte	-30
+ 130 0069 04       		.byte	4
+ 131 006a 04       		.byte	4
+ 132 006b 03       		.byte	3
+ 133 006c 05       		.byte	5
+ 134 006d 19       		.byte	25
+ 135 006e 06       		.byte	6
+ 136 006f 04       		.byte	4
+ 137 0070 07       		.byte	7
+ 138 0071 22       		.byte	34
+ 139 0072 0A       		.byte	10
+ 140 0073 08       		.byte	8
+ 141 0074 0B       		.byte	11
+ 142 0075 01       		.byte	1
+ 143 0076 0C       		.byte	12
+ 144 0077 0A       		.byte	10
+ 145 0078 0D       		.byte	13
+ 146 0079 21       		.byte	33
+ 147 007a 0E       		.byte	14
+ 148 007b 04       		.byte	4
+ 149 007c 0F       		.byte	15
+ 150 007d 18       		.byte	24
+ 151 007e 10       		.byte	16
+ 152 007f 03       		.byte	3
+ 153 0080 11       		.byte	17
+ 154 0081 38       		.byte	56
+ 155 0082 12       		.byte	18
+ 156 0083 0C       		.byte	12
+ 157 0084 13       		.byte	19
+ 158 0085 05       		.byte	5
+ 159 0086 17       		.byte	23
+ 160 0087 06       		.byte	6
+ 161 0088 19       		.byte	25
+ 162 0089 12       		.byte	18
+ 163 008a 1B       		.byte	27
+ 164 008b 20       		.byte	32
+ 165 008c 1F       		.byte	31
+ 166 008d 01       		.byte	1
+ 167 008e 20       		.byte	32
+ 168 008f 10       		.byte	16
+ 169 0090 25       		.byte	37
+ 170 0091 20       		.byte	32
+ 171 0092 26       		.byte	38
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 4
+
+
+ 172 0093 05       		.byte	5
+ 173 0094 28       		.byte	40
+ 174 0095 03       		.byte	3
+ 175 0096 29       		.byte	41
+ 176 0097 28       		.byte	40
+ 177 0098 2A       		.byte	42
+ 178 0099 04       		.byte	4
+ 179 009a 30       		.byte	48
+ 180 009b 0F       		.byte	15
+ 181 009c 33       		.byte	51
+ 182 009d 01       		.byte	1
+ 183 009e 34       		.byte	52
+ 184 009f 10       		.byte	16
+ 185 00a0 35       		.byte	53
+ 186 00a1 3E       		.byte	62
+ 187 00a2 3A       		.byte	58
+ 188 00a3 02       		.byte	2
+ 189 00a4 3E       		.byte	62
+ 190 00a5 10       		.byte	16
+ 191 00a6 3F       		.byte	63
+ 192 00a7 04       		.byte	4
+ 193 00a8 40       		.byte	64
+ 194 00a9 43       		.byte	67
+ 195 00aa 41       		.byte	65
+ 196 00ab 02       		.byte	2
+ 197 00ac 45       		.byte	69
+ 198 00ad E0       		.byte	-32
+ 199 00ae 46       		.byte	70
+ 200 00af C0       		.byte	-64
+ 201 00b0 47       		.byte	71
+ 202 00b1 0B       		.byte	11
+ 203 00b2 48       		.byte	72
+ 204 00b3 1A       		.byte	26
+ 205 00b4 49       		.byte	73
+ 206 00b5 FF       		.byte	-1
+ 207 00b6 4A       		.byte	74
+ 208 00b7 FF       		.byte	-1
+ 209 00b8 4B       		.byte	75
+ 210 00b9 FF       		.byte	-1
+ 211 00ba 4E       		.byte	78
+ 212 00bb F0       		.byte	-16
+ 213 00bc 4F       		.byte	79
+ 214 00bd 44       		.byte	68
+ 215 00be 50       		.byte	80
+ 216 00bf 0C       		.byte	12
+ 217 00c0 54       		.byte	84
+ 218 00c1 01       		.byte	1
+ 219 00c2 58       		.byte	88
+ 220 00c3 04       		.byte	4
+ 221 00c4 59       		.byte	89
+ 222 00c5 04       		.byte	4
+ 223 00c6 5A       		.byte	90
+ 224 00c7 04       		.byte	4
+ 225 00c8 5B       		.byte	91
+ 226 00c9 04       		.byte	4
+ 227 00ca 5F       		.byte	95
+ 228 00cb 01       		.byte	1
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 5
+
+
+ 229 00cc 66       		.byte	102
+ 230 00cd C0       		.byte	-64
+ 231 00ce 6A       		.byte	106
+ 232 00cf 40       		.byte	64
+ 233 00d0 6B       		.byte	107
+ 234 00d1 02       		.byte	2
+ 235 00d2 80       		.byte	-128
+ 236 00d3 10       		.byte	16
+ 237 00d4 82       		.byte	-126
+ 238 00d5 04       		.byte	4
+ 239 00d6 86       		.byte	-122
+ 240 00d7 01       		.byte	1
+ 241 00d8 8C       		.byte	-116
+ 242 00d9 03       		.byte	3
+ 243 00da 90       		.byte	-112
+ 244 00db 08       		.byte	8
+ 245 00dc 92       		.byte	-110
+ 246 00dd 04       		.byte	4
+ 247 00de 95       		.byte	-107
+ 248 00df 01       		.byte	1
+ 249 00e0 98       		.byte	-104
+ 250 00e1 03       		.byte	3
+ 251 00e2 9C       		.byte	-100
+ 252 00e3 04       		.byte	4
+ 253 00e4 9E       		.byte	-98
+ 254 00e5 18       		.byte	24
+ 255 00e6 A0       		.byte	-96
+ 256 00e7 02       		.byte	2
+ 257 00e8 A4       		.byte	-92
+ 258 00e9 1C       		.byte	28
+ 259 00ea A8       		.byte	-88
+ 260 00eb 1C       		.byte	28
+ 261 00ec B1       		.byte	-79
+ 262 00ed 01       		.byte	1
+ 263 00ee B4       		.byte	-76
+ 264 00ef 03       		.byte	3
+ 265 00f0 B6       		.byte	-74
+ 266 00f1 1C       		.byte	28
+ 267 00f2 B8       		.byte	-72
+ 268 00f3 20       		.byte	32
+ 269 00f4 BE       		.byte	-66
+ 270 00f5 10       		.byte	16
+ 271 00f6 BF       		.byte	-65
+ 272 00f7 01       		.byte	1
+ 273 00f8 C0       		.byte	-64
+ 274 00f9 02       		.byte	2
+ 275 00fa C6       		.byte	-58
+ 276 00fb 40       		.byte	64
+ 277 00fc C9       		.byte	-55
+ 278 00fd FF       		.byte	-1
+ 279 00fe CA       		.byte	-54
+ 280 00ff 07       		.byte	7
+ 281 0100 CB       		.byte	-53
+ 282 0101 FF       		.byte	-1
+ 283 0102 CC       		.byte	-52
+ 284 0103 40       		.byte	64
+ 285 0104 CD       		.byte	-51
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 6
+
+
+ 286 0105 20       		.byte	32
+ 287 0106 CE       		.byte	-50
+ 288 0107 F0       		.byte	-16
+ 289 0108 CF       		.byte	-49
+ 290 0109 05       		.byte	5
+ 291 010a D0       		.byte	-48
+ 292 010b 08       		.byte	8
+ 293 010c D8       		.byte	-40
+ 294 010d 04       		.byte	4
+ 295 010e D9       		.byte	-39
+ 296 010f 04       		.byte	4
+ 297 0110 DA       		.byte	-38
+ 298 0111 04       		.byte	4
+ 299 0112 DF       		.byte	-33
+ 300 0113 01       		.byte	1
+ 301 0114 E0       		.byte	-32
+ 302 0115 40       		.byte	64
+ 303 0116 E1       		.byte	-31
+ 304 0117 A8       		.byte	-88
+ 305 0118 E2       		.byte	-30
+ 306 0119 40       		.byte	64
+ 307 011a E3       		.byte	-29
+ 308 011b 20       		.byte	32
+ 309 011c 00       		.byte	0
+ 310 011d 40       		.byte	64
+ 311 011e 01       		.byte	1
+ 312 011f 0A       		.byte	10
+ 313 0120 05       		.byte	5
+ 314 0121 20       		.byte	32
+ 315 0122 06       		.byte	6
+ 316 0123 10       		.byte	16
+ 317 0124 07       		.byte	7
+ 318 0125 22       		.byte	34
+ 319 0126 08       		.byte	8
+ 320 0127 02       		.byte	2
+ 321 0128 0A       		.byte	10
+ 322 0129 05       		.byte	5
+ 323 012a 0D       		.byte	13
+ 324 012b 02       		.byte	2
+ 325 012c 11       		.byte	17
+ 326 012d 14       		.byte	20
+ 327 012e 13       		.byte	19
+ 328 012f 02       		.byte	2
+ 329 0130 14       		.byte	20
+ 330 0131 20       		.byte	32
+ 331 0132 15       		.byte	21
+ 332 0133 01       		.byte	1
+ 333 0134 16       		.byte	22
+ 334 0135 08       		.byte	8
+ 335 0136 18       		.byte	24
+ 336 0137 04       		.byte	4
+ 337 0138 1A       		.byte	26
+ 338 0139 01       		.byte	1
+ 339 013a 1C       		.byte	28
+ 340 013b 40       		.byte	64
+ 341 013c 1D       		.byte	29
+ 342 013d 02       		.byte	2
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 7
+
+
+ 343 013e 1E       		.byte	30
+ 344 013f 08       		.byte	8
+ 345 0140 23       		.byte	35
+ 346 0141 40       		.byte	64
+ 347 0142 26       		.byte	38
+ 348 0143 08       		.byte	8
+ 349 0144 27       		.byte	39
+ 350 0145 04       		.byte	4
+ 351 0146 2C       		.byte	44
+ 352 0147 08       		.byte	8
+ 353 0148 2F       		.byte	47
+ 354 0149 10       		.byte	16
+ 355 014a 33       		.byte	51
+ 356 014b 04       		.byte	4
+ 357 014c 35       		.byte	53
+ 358 014d 60       		.byte	96
+ 359 014e 37       		.byte	55
+ 360 014f 06       		.byte	6
+ 361 0150 3C       		.byte	60
+ 362 0151 40       		.byte	64
+ 363 0152 3E       		.byte	62
+ 364 0153 0C       		.byte	12
+ 365 0154 3F       		.byte	63
+ 366 0155 20       		.byte	32
+ 367 0156 40       		.byte	64
+ 368 0157 04       		.byte	4
+ 369 0158 44       		.byte	68
+ 370 0159 20       		.byte	32
+ 371 015a 45       		.byte	69
+ 372 015b 02       		.byte	2
+ 373 015c 46       		.byte	70
+ 374 015d 08       		.byte	8
+ 375 015e 49       		.byte	73
+ 376 015f 08       		.byte	8
+ 377 0160 4D       		.byte	77
+ 378 0161 01       		.byte	1
+ 379 0162 53       		.byte	83
+ 380 0163 10       		.byte	16
+ 381 0164 54       		.byte	84
+ 382 0165 08       		.byte	8
+ 383 0166 56       		.byte	86
+ 384 0167 10       		.byte	16
+ 385 0168 57       		.byte	87
+ 386 0169 10       		.byte	16
+ 387 016a 5D       		.byte	93
+ 388 016b 01       		.byte	1
+ 389 016c 5E       		.byte	94
+ 390 016d 48       		.byte	72
+ 391 016e 5F       		.byte	95
+ 392 016f 20       		.byte	32
+ 393 0170 88       		.byte	-120
+ 394 0171 20       		.byte	32
+ 395 0172 89       		.byte	-119
+ 396 0173 48       		.byte	72
+ 397 0174 91       		.byte	-111
+ 398 0175 14       		.byte	20
+ 399 0176 92       		.byte	-110
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 8
+
+
+ 400 0177 04       		.byte	4
+ 401 0178 96       		.byte	-106
+ 402 0179 01       		.byte	1
+ 403 017a 97       		.byte	-105
+ 404 017b 60       		.byte	96
+ 405 017c 98       		.byte	-104
+ 406 017d 02       		.byte	2
+ 407 017e 99       		.byte	-103
+ 408 017f 22       		.byte	34
+ 409 0180 9B       		.byte	-101
+ 410 0181 02       		.byte	2
+ 411 0182 9D       		.byte	-99
+ 412 0183 08       		.byte	8
+ 413 0184 A5       		.byte	-91
+ 414 0185 02       		.byte	2
+ 415 0186 B0       		.byte	-80
+ 416 0187 02       		.byte	2
+ 417 0188 B2       		.byte	-78
+ 418 0189 01       		.byte	1
+ 419 018a C0       		.byte	-64
+ 420 018b ED       		.byte	-19
+ 421 018c C2       		.byte	-62
+ 422 018d 1B       		.byte	27
+ 423 018e C4       		.byte	-60
+ 424 018f 7E       		.byte	126
+ 425 0190 CA       		.byte	-54
+ 426 0191 60       		.byte	96
+ 427 0192 CC       		.byte	-52
+ 428 0193 F2       		.byte	-14
+ 429 0194 CE       		.byte	-50
+ 430 0195 70       		.byte	112
+ 431 0196 D0       		.byte	-48
+ 432 0197 E4       		.byte	-28
+ 433 0198 D6       		.byte	-42
+ 434 0199 F0       		.byte	-16
+ 435 019a 02       		.byte	2
+ 436 019b 04       		.byte	4
+ 437 019c 04       		.byte	4
+ 438 019d 02       		.byte	2
+ 439 019e 05       		.byte	5
+ 440 019f 18       		.byte	24
+ 441 01a0 08       		.byte	8
+ 442 01a1 1C       		.byte	28
+ 443 01a2 09       		.byte	9
+ 444 01a3 08       		.byte	8
+ 445 01a4 0C       		.byte	12
+ 446 01a5 18       		.byte	24
+ 447 01a6 0D       		.byte	13
+ 448 01a7 10       		.byte	16
+ 449 01a8 10       		.byte	16
+ 450 01a9 18       		.byte	24
+ 451 01aa 11       		.byte	17
+ 452 01ab 03       		.byte	3
+ 453 01ac 12       		.byte	18
+ 454 01ad 04       		.byte	4
+ 455 01ae 14       		.byte	20
+ 456 01af 18       		.byte	24
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 9
+
+
+ 457 01b0 15       		.byte	21
+ 458 01b1 1F       		.byte	31
+ 459 01b2 16       		.byte	22
+ 460 01b3 04       		.byte	4
+ 461 01b4 18       		.byte	24
+ 462 01b5 01       		.byte	1
+ 463 01b6 1B       		.byte	27
+ 464 01b7 07       		.byte	7
+ 465 01b8 1C       		.byte	28
+ 466 01b9 01       		.byte	1
+ 467 01ba 1D       		.byte	29
+ 468 01bb 1C       		.byte	28
+ 469 01bc 1F       		.byte	31
+ 470 01bd 03       		.byte	3
+ 471 01be 20       		.byte	32
+ 472 01bf 10       		.byte	16
+ 473 01c0 21       		.byte	33
+ 474 01c1 02       		.byte	2
+ 475 01c2 24       		.byte	36
+ 476 01c3 08       		.byte	8
+ 477 01c4 25       		.byte	37
+ 478 01c5 07       		.byte	7
+ 479 01c6 27       		.byte	39
+ 480 01c7 18       		.byte	24
+ 481 01c8 28       		.byte	40
+ 482 01c9 04       		.byte	4
+ 483 01ca 29       		.byte	41
+ 484 01cb 18       		.byte	24
+ 485 01cc 2A       		.byte	42
+ 486 01cd 18       		.byte	24
+ 487 01ce 2B       		.byte	43
+ 488 01cf 07       		.byte	7
+ 489 01d0 2D       		.byte	45
+ 490 01d1 01       		.byte	1
+ 491 01d2 2E       		.byte	46
+ 492 01d3 01       		.byte	1
+ 493 01d4 31       		.byte	49
+ 494 01d5 03       		.byte	3
+ 495 01d6 32       		.byte	50
+ 496 01d7 1C       		.byte	28
+ 497 01d8 34       		.byte	52
+ 498 01d9 03       		.byte	3
+ 499 01da 35       		.byte	53
+ 500 01db 1C       		.byte	28
+ 501 01dc 38       		.byte	56
+ 502 01dd 20       		.byte	32
+ 503 01de 3A       		.byte	58
+ 504 01df 08       		.byte	8
+ 505 01e0 3B       		.byte	59
+ 506 01e1 08       		.byte	8
+ 507 01e2 54       		.byte	84
+ 508 01e3 18       		.byte	24
+ 509 01e4 56       		.byte	86
+ 510 01e5 04       		.byte	4
+ 511 01e6 58       		.byte	88
+ 512 01e7 04       		.byte	4
+ 513 01e8 59       		.byte	89
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 10
+
+
+ 514 01e9 04       		.byte	4
+ 515 01ea 5B       		.byte	91
+ 516 01eb 04       		.byte	4
+ 517 01ec 5F       		.byte	95
+ 518 01ed 01       		.byte	1
+ 519 01ee 85       		.byte	-123
+ 520 01ef 01       		.byte	1
+ 521 01f0 86       		.byte	-122
+ 522 01f1 01       		.byte	1
+ 523 01f2 87       		.byte	-121
+ 524 01f3 0E       		.byte	14
+ 525 01f4 8A       		.byte	-118
+ 526 01f5 06       		.byte	6
+ 527 01f6 8C       		.byte	-116
+ 528 01f7 06       		.byte	6
+ 529 01f8 8E       		.byte	-114
+ 530 01f9 01       		.byte	1
+ 531 01fa 91       		.byte	-111
+ 532 01fb 0C       		.byte	12
+ 533 01fc 92       		.byte	-110
+ 534 01fd 05       		.byte	5
+ 535 01fe 93       		.byte	-109
+ 536 01ff 03       		.byte	3
+ 537 0200 97       		.byte	-105
+ 538 0201 03       		.byte	3
+ 539 0202 9A       		.byte	-102
+ 540 0203 03       		.byte	3
+ 541 0204 9B       		.byte	-101
+ 542 0205 0C       		.byte	12
+ 543 0206 9D       		.byte	-99
+ 544 0207 01       		.byte	1
+ 545 0208 9F       		.byte	-97
+ 546 0209 06       		.byte	6
+ 547 020a A7       		.byte	-89
+ 548 020b 08       		.byte	8
+ 549 020c AA       		.byte	-86
+ 550 020d 02       		.byte	2
+ 551 020e B4       		.byte	-76
+ 552 020f 07       		.byte	7
+ 553 0210 B7       		.byte	-73
+ 554 0211 0F       		.byte	15
+ 555 0212 BA       		.byte	-70
+ 556 0213 20       		.byte	32
+ 557 0214 BB       		.byte	-69
+ 558 0215 80       		.byte	-128
+ 559 0216 D2       		.byte	-46
+ 560 0217 80       		.byte	-128
+ 561 0218 D8       		.byte	-40
+ 562 0219 04       		.byte	4
+ 563 021a D9       		.byte	-39
+ 564 021b 04       		.byte	4
+ 565 021c DB       		.byte	-37
+ 566 021d 04       		.byte	4
+ 567 021e DD       		.byte	-35
+ 568 021f 10       		.byte	16
+ 569 0220 DF       		.byte	-33
+ 570 0221 01       		.byte	1
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 11
+
+
+ 571 0222 00       		.byte	0
+ 572 0223 20       		.byte	32
+ 573 0224 01       		.byte	1
+ 574 0225 88       		.byte	-120
+ 575 0226 02       		.byte	2
+ 576 0227 80       		.byte	-128
+ 577 0228 05       		.byte	5
+ 578 0229 28       		.byte	40
+ 579 022a 07       		.byte	7
+ 580 022b 02       		.byte	2
+ 581 022c 08       		.byte	8
+ 582 022d 40       		.byte	64
+ 583 022e 0A       		.byte	10
+ 584 022f 94       		.byte	-108
+ 585 0230 0D       		.byte	13
+ 586 0231 02       		.byte	2
+ 587 0232 0E       		.byte	14
+ 588 0233 84       		.byte	-124
+ 589 0234 11       		.byte	17
+ 590 0235 80       		.byte	-128
+ 591 0236 12       		.byte	18
+ 592 0237 54       		.byte	84
+ 593 0238 13       		.byte	19
+ 594 0239 08       		.byte	8
+ 595 023a 16       		.byte	22
+ 596 023b 08       		.byte	8
+ 597 023c 19       		.byte	25
+ 598 023d 20       		.byte	32
+ 599 023e 1A       		.byte	26
+ 600 023f 10       		.byte	16
+ 601 0240 1B       		.byte	27
+ 602 0241 04       		.byte	4
+ 603 0242 1E       		.byte	30
+ 604 0243 04       		.byte	4
+ 605 0244 20       		.byte	32
+ 606 0245 20       		.byte	32
+ 607 0246 21       		.byte	33
+ 608 0247 10       		.byte	16
+ 609 0248 22       		.byte	34
+ 610 0249 05       		.byte	5
+ 611 024a 25       		.byte	37
+ 612 024b 40       		.byte	64
+ 613 024c 27       		.byte	39
+ 614 024d 02       		.byte	2
+ 615 024e 28       		.byte	40
+ 616 024f 02       		.byte	2
+ 617 0250 29       		.byte	41
+ 618 0251 02       		.byte	2
+ 619 0252 2A       		.byte	42
+ 620 0253 04       		.byte	4
+ 621 0254 2B       		.byte	43
+ 622 0255 04       		.byte	4
+ 623 0256 2E       		.byte	46
+ 624 0257 08       		.byte	8
+ 625 0258 2F       		.byte	47
+ 626 0259 10       		.byte	16
+ 627 025a 30       		.byte	48
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 12
+
+
+ 628 025b 02       		.byte	2
+ 629 025c 32       		.byte	50
+ 630 025d 44       		.byte	68
+ 631 025e 33       		.byte	51
+ 632 025f 20       		.byte	32
+ 633 0260 34       		.byte	52
+ 634 0261 40       		.byte	64
+ 635 0262 35       		.byte	53
+ 636 0263 28       		.byte	40
+ 637 0264 36       		.byte	54
+ 638 0265 40       		.byte	64
+ 639 0266 37       		.byte	55
+ 640 0267 02       		.byte	2
+ 641 0268 38       		.byte	56
+ 642 0269 88       		.byte	-120
+ 643 026a 3A       		.byte	58
+ 644 026b 50       		.byte	80
+ 645 026c 3E       		.byte	62
+ 646 026d 04       		.byte	4
+ 647 026e 5A       		.byte	90
+ 648 026f 02       		.byte	2
+ 649 0270 60       		.byte	96
+ 650 0271 04       		.byte	4
+ 651 0272 61       		.byte	97
+ 652 0273 80       		.byte	-128
+ 653 0274 63       		.byte	99
+ 654 0275 80       		.byte	-128
+ 655 0276 76       		.byte	118
+ 656 0277 80       		.byte	-128
+ 657 0278 83       		.byte	-125
+ 658 0279 40       		.byte	64
+ 659 027a 8B       		.byte	-117
+ 660 027b 40       		.byte	64
+ 661 027c 90       		.byte	-112
+ 662 027d 8C       		.byte	-116
+ 663 027e 91       		.byte	-111
+ 664 027f 14       		.byte	20
+ 665 0280 92       		.byte	-110
+ 666 0281 80       		.byte	-128
+ 667 0282 95       		.byte	-107
+ 668 0283 20       		.byte	32
+ 669 0284 96       		.byte	-106
+ 670 0285 11       		.byte	17
+ 671 0286 98       		.byte	-104
+ 672 0287 02       		.byte	2
+ 673 0288 99       		.byte	-103
+ 674 0289 82       		.byte	-126
+ 675 028a 9A       		.byte	-102
+ 676 028b 04       		.byte	4
+ 677 028c 9B       		.byte	-101
+ 678 028d 08       		.byte	8
+ 679 028e 9E       		.byte	-98
+ 680 028f 80       		.byte	-128
+ 681 0290 A1       		.byte	-95
+ 682 0291 80       		.byte	-128
+ 683 0292 A2       		.byte	-94
+ 684 0293 80       		.byte	-128
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 13
+
+
+ 685 0294 A3       		.byte	-93
+ 686 0295 20       		.byte	32
+ 687 0296 A4       		.byte	-92
+ 688 0297 10       		.byte	16
+ 689 0298 B0       		.byte	-80
+ 690 0299 12       		.byte	18
+ 691 029a B2       		.byte	-78
+ 692 029b 80       		.byte	-128
+ 693 029c B3       		.byte	-77
+ 694 029d 20       		.byte	32
+ 695 029e B5       		.byte	-75
+ 696 029f 10       		.byte	16
+ 697 02a0 C0       		.byte	-64
+ 698 02a1 EF       		.byte	-17
+ 699 02a2 C2       		.byte	-62
+ 700 02a3 5F       		.byte	95
+ 701 02a4 C4       		.byte	-60
+ 702 02a5 4F       		.byte	79
+ 703 02a6 CA       		.byte	-54
+ 704 02a7 4F       		.byte	79
+ 705 02a8 CC       		.byte	-52
+ 706 02a9 FF       		.byte	-1
+ 707 02aa CE       		.byte	-50
+ 708 02ab 4E       		.byte	78
+ 709 02ac D6       		.byte	-42
+ 710 02ad 01       		.byte	1
+ 711 02ae D8       		.byte	-40
+ 712 02af 0D       		.byte	13
+ 713 02b0 02       		.byte	2
+ 714 02b1 01       		.byte	1
+ 715 02b2 19       		.byte	25
+ 716 02b3 02       		.byte	2
+ 717 02b4 22       		.byte	34
+ 718 02b5 01       		.byte	1
+ 719 02b6 25       		.byte	37
+ 720 02b7 02       		.byte	2
+ 721 02b8 2F       		.byte	47
+ 722 02b9 01       		.byte	1
+ 723 02ba 31       		.byte	49
+ 724 02bb 01       		.byte	1
+ 725 02bc 34       		.byte	52
+ 726 02bd 01       		.byte	1
+ 727 02be 37       		.byte	55
+ 728 02bf 02       		.byte	2
+ 729 02c0 39       		.byte	57
+ 730 02c1 80       		.byte	-128
+ 731 02c2 3E       		.byte	62
+ 732 02c3 10       		.byte	16
+ 733 02c4 40       		.byte	64
+ 734 02c5 10       		.byte	16
+ 735 02c6 41       		.byte	65
+ 736 02c7 04       		.byte	4
+ 737 02c8 49       		.byte	73
+ 738 02c9 FF       		.byte	-1
+ 739 02ca 4A       		.byte	74
+ 740 02cb FF       		.byte	-1
+ 741 02cc 4B       		.byte	75
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 14
+
+
+ 742 02cd FF       		.byte	-1
+ 743 02ce 4D       		.byte	77
+ 744 02cf A0       		.byte	-96
+ 745 02d0 4F       		.byte	79
+ 746 02d1 04       		.byte	4
+ 747 02d2 50       		.byte	80
+ 748 02d3 18       		.byte	24
+ 749 02d4 58       		.byte	88
+ 750 02d5 04       		.byte	4
+ 751 02d6 59       		.byte	89
+ 752 02d7 04       		.byte	4
+ 753 02d8 5A       		.byte	90
+ 754 02d9 04       		.byte	4
+ 755 02da 5C       		.byte	92
+ 756 02db 10       		.byte	16
+ 757 02dc 5D       		.byte	93
+ 758 02dd 01       		.byte	1
+ 759 02de 5F       		.byte	95
+ 760 02df 01       		.byte	1
+ 761 02e0 60       		.byte	96
+ 762 02e1 40       		.byte	64
+ 763 02e2 62       		.byte	98
+ 764 02e3 C0       		.byte	-64
+ 765 02e4 64       		.byte	100
+ 766 02e5 40       		.byte	64
+ 767 02e6 65       		.byte	101
+ 768 02e7 40       		.byte	64
+ 769 02e8 66       		.byte	102
+ 770 02e9 C0       		.byte	-64
+ 771 02ea 68       		.byte	104
+ 772 02eb C0       		.byte	-64
+ 773 02ec 6A       		.byte	106
+ 774 02ed C0       		.byte	-64
+ 775 02ee 6C       		.byte	108
+ 776 02ef C0       		.byte	-64
+ 777 02f0 6E       		.byte	110
+ 778 02f1 C0       		.byte	-64
+ 779 02f2 83       		.byte	-125
+ 780 02f3 04       		.byte	4
+ 781 02f4 85       		.byte	-123
+ 782 02f5 18       		.byte	24
+ 783 02f6 88       		.byte	-120
+ 784 02f7 01       		.byte	1
+ 785 02f8 89       		.byte	-119
+ 786 02f9 08       		.byte	8
+ 787 02fa 8D       		.byte	-115
+ 788 02fb 10       		.byte	16
+ 789 02fc 8E       		.byte	-114
+ 790 02fd 02       		.byte	2
+ 791 02fe 90       		.byte	-112
+ 792 02ff 01       		.byte	1
+ 793 0300 91       		.byte	-111
+ 794 0301 60       		.byte	96
+ 795 0302 94       		.byte	-108
+ 796 0303 01       		.byte	1
+ 797 0304 95       		.byte	-107
+ 798 0305 7C       		.byte	124
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 15
+
+
+ 799 0306 97       		.byte	-105
+ 800 0307 01       		.byte	1
+ 801 0308 99       		.byte	-103
+ 802 0309 24       		.byte	36
+ 803 030a 9A       		.byte	-102
+ 804 030b 04       		.byte	4
+ 805 030c 9B       		.byte	-101
+ 806 030d 80       		.byte	-128
+ 807 030e 9F       		.byte	-97
+ 808 030f 63       		.byte	99
+ 809 0310 A1       		.byte	-95
+ 810 0311 40       		.byte	64
+ 811 0312 A2       		.byte	-94
+ 812 0313 06       		.byte	6
+ 813 0314 A5       		.byte	-91
+ 814 0315 67       		.byte	103
+ 815 0316 A7       		.byte	-89
+ 816 0317 18       		.byte	24
+ 817 0318 A8       		.byte	-88
+ 818 0319 01       		.byte	1
+ 819 031a A9       		.byte	-87
+ 820 031b 7F       		.byte	127
+ 821 031c AD       		.byte	-83
+ 822 031d 1C       		.byte	28
+ 823 031e AF       		.byte	-81
+ 824 031f 62       		.byte	98
+ 825 0320 B0       		.byte	-80
+ 826 0321 01       		.byte	1
+ 827 0322 B1       		.byte	-79
+ 828 0323 80       		.byte	-128
+ 829 0324 B3       		.byte	-77
+ 830 0325 78       		.byte	120
+ 831 0326 B4       		.byte	-76
+ 832 0327 06       		.byte	6
+ 833 0328 B7       		.byte	-73
+ 834 0329 1F       		.byte	31
+ 835 032a BB       		.byte	-69
+ 836 032b 88       		.byte	-120
+ 837 032c BE       		.byte	-66
+ 838 032d 01       		.byte	1
+ 839 032e C0       		.byte	-64
+ 840 032f 50       		.byte	80
+ 841 0330 C1       		.byte	-63
+ 842 0331 01       		.byte	1
+ 843 0332 C5       		.byte	-59
+ 844 0333 D0       		.byte	-48
+ 845 0334 C6       		.byte	-58
+ 846 0335 12       		.byte	18
+ 847 0336 C7       		.byte	-57
+ 848 0337 45       		.byte	69
+ 849 0338 C8       		.byte	-56
+ 850 0339 3F       		.byte	63
+ 851 033a C9       		.byte	-55
+ 852 033b FF       		.byte	-1
+ 853 033c CA       		.byte	-54
+ 854 033d FF       		.byte	-1
+ 855 033e CB       		.byte	-53
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 16
+
+
+ 856 033f FF       		.byte	-1
+ 857 0340 CD       		.byte	-51
+ 858 0341 AF       		.byte	-81
+ 859 0342 CE       		.byte	-50
+ 860 0343 0F       		.byte	15
+ 861 0344 CF       		.byte	-49
+ 862 0345 04       		.byte	4
+ 863 0346 D0       		.byte	-48
+ 864 0347 18       		.byte	24
+ 865 0348 D6       		.byte	-42
+ 866 0349 02       		.byte	2
+ 867 034a D7       		.byte	-41
+ 868 034b 13       		.byte	19
+ 869 034c D8       		.byte	-40
+ 870 034d 04       		.byte	4
+ 871 034e D9       		.byte	-39
+ 872 034f 04       		.byte	4
+ 873 0350 DA       		.byte	-38
+ 874 0351 04       		.byte	4
+ 875 0352 DB       		.byte	-37
+ 876 0353 04       		.byte	4
+ 877 0354 DC       		.byte	-36
+ 878 0355 01       		.byte	1
+ 879 0356 DD       		.byte	-35
+ 880 0357 01       		.byte	1
+ 881 0358 DF       		.byte	-33
+ 882 0359 01       		.byte	1
+ 883 035a E0       		.byte	-32
+ 884 035b 40       		.byte	64
+ 885 035c E2       		.byte	-30
+ 886 035d C0       		.byte	-64
+ 887 035e E4       		.byte	-28
+ 888 035f 40       		.byte	64
+ 889 0360 E5       		.byte	-27
+ 890 0361 40       		.byte	64
+ 891 0362 E6       		.byte	-26
+ 892 0363 C0       		.byte	-64
+ 893 0364 E8       		.byte	-24
+ 894 0365 C0       		.byte	-64
+ 895 0366 EA       		.byte	-22
+ 896 0367 C0       		.byte	-64
+ 897 0368 EC       		.byte	-20
+ 898 0369 C0       		.byte	-64
+ 899 036a EE       		.byte	-18
+ 900 036b C0       		.byte	-64
+ 901 036c 00       		.byte	0
+ 902 036d 20       		.byte	32
+ 903 036e 01       		.byte	1
+ 904 036f 20       		.byte	32
+ 905 0370 02       		.byte	2
+ 906 0371 02       		.byte	2
+ 907 0372 07       		.byte	7
+ 908 0373 80       		.byte	-128
+ 909 0374 08       		.byte	8
+ 910 0375 05       		.byte	5
+ 911 0376 0A       		.byte	10
+ 912 0377 93       		.byte	-109
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 17
+
+
+ 913 0378 0B       		.byte	11
+ 914 0379 08       		.byte	8
+ 915 037a 11       		.byte	17
+ 916 037b 02       		.byte	2
+ 917 037c 12       		.byte	18
+ 918 037d 0C       		.byte	12
+ 919 037e 16       		.byte	22
+ 920 037f 40       		.byte	64
+ 921 0380 19       		.byte	25
+ 922 0381 11       		.byte	17
+ 923 0382 1E       		.byte	30
+ 924 0383 08       		.byte	8
+ 925 0384 20       		.byte	32
+ 926 0385 10       		.byte	16
+ 927 0386 21       		.byte	33
+ 928 0387 01       		.byte	1
+ 929 0388 22       		.byte	34
+ 930 0389 48       		.byte	72
+ 931 038a 25       		.byte	37
+ 932 038b 01       		.byte	1
+ 933 038c 26       		.byte	38
+ 934 038d 01       		.byte	1
+ 935 038e 27       		.byte	39
+ 936 038f 82       		.byte	-126
+ 937 0390 28       		.byte	40
+ 938 0391 01       		.byte	1
+ 939 0392 29       		.byte	41
+ 940 0393 22       		.byte	34
+ 941 0394 2A       		.byte	42
+ 942 0395 04       		.byte	4
+ 943 0396 2E       		.byte	46
+ 944 0397 80       		.byte	-128
+ 945 0398 2F       		.byte	47
+ 946 0399 10       		.byte	16
+ 947 039a 30       		.byte	48
+ 948 039b 14       		.byte	20
+ 949 039c 32       		.byte	50
+ 950 039d 81       		.byte	-127
+ 951 039e 36       		.byte	54
+ 952 039f 10       		.byte	16
+ 953 03a0 38       		.byte	56
+ 954 03a1 A8       		.byte	-88
+ 955 03a2 39       		.byte	57
+ 956 03a3 02       		.byte	2
+ 957 03a4 41       		.byte	65
+ 958 03a5 40       		.byte	64
+ 959 03a6 46       		.byte	70
+ 960 03a7 40       		.byte	64
+ 961 03a8 47       		.byte	71
+ 962 03a9 80       		.byte	-128
+ 963 03aa 4A       		.byte	74
+ 964 03ab 11       		.byte	17
+ 965 03ac 4B       		.byte	75
+ 966 03ad 01       		.byte	1
+ 967 03ae 51       		.byte	81
+ 968 03af 40       		.byte	64
+ 969 03b0 52       		.byte	82
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 18
+
+
+ 970 03b1 42       		.byte	66
+ 971 03b2 53       		.byte	83
+ 972 03b3 1C       		.byte	28
+ 973 03b4 59       		.byte	89
+ 974 03b5 01       		.byte	1
+ 975 03b6 69       		.byte	105
+ 976 03b7 54       		.byte	84
+ 977 03b8 6B       		.byte	107
+ 978 03b9 04       		.byte	4
+ 979 03ba 70       		.byte	112
+ 980 03bb 54       		.byte	84
+ 981 03bc 72       		.byte	114
+ 982 03bd 20       		.byte	32
+ 983 03be 73       		.byte	115
+ 984 03bf 08       		.byte	8
+ 985 03c0 89       		.byte	-119
+ 986 03c1 80       		.byte	-128
+ 987 03c2 8A       		.byte	-118
+ 988 03c3 20       		.byte	32
+ 989 03c4 90       		.byte	-112
+ 990 03c5 04       		.byte	4
+ 991 03c6 94       		.byte	-108
+ 992 03c7 10       		.byte	16
+ 993 03c8 95       		.byte	-107
+ 994 03c9 64       		.byte	100
+ 995 03ca 96       		.byte	-106
+ 996 03cb 11       		.byte	17
+ 997 03cc 97       		.byte	-105
+ 998 03cd 21       		.byte	33
+ 999 03ce 99       		.byte	-103
+ 1000 03cf 02       		.byte	2
+ 1001 03d0 9C       		.byte	-100
+ 1002 03d1 03       		.byte	3
+ 1003 03d2 9D       		.byte	-99
+ 1004 03d3 20       		.byte	32
+ 1005 03d4 9F       		.byte	-97
+ 1006 03d5 86       		.byte	-122
+ 1007 03d6 A1       		.byte	-95
+ 1008 03d7 80       		.byte	-128
+ 1009 03d8 A2       		.byte	-94
+ 1010 03d9 80       		.byte	-128
+ 1011 03da A6       		.byte	-90
+ 1012 03db 16       		.byte	22
+ 1013 03dc A7       		.byte	-89
+ 1014 03dd 08       		.byte	8
+ 1015 03de B5       		.byte	-75
+ 1016 03df 01       		.byte	1
+ 1017 03e0 C0       		.byte	-64
+ 1018 03e1 13       		.byte	19
+ 1019 03e2 C2       		.byte	-62
+ 1020 03e3 0E       		.byte	14
+ 1021 03e4 C4       		.byte	-60
+ 1022 03e5 1A       		.byte	26
+ 1023 03e6 CA       		.byte	-54
+ 1024 03e7 5F       		.byte	95
+ 1025 03e8 CC       		.byte	-52
+ 1026 03e9 2F       		.byte	47
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 19
+
+
+ 1027 03ea CE       		.byte	-50
+ 1028 03eb 0F       		.byte	15
+ 1029 03ec D0       		.byte	-48
+ 1030 03ed 98       		.byte	-104
+ 1031 03ee D2       		.byte	-46
+ 1032 03ef 08       		.byte	8
+ 1033 03f0 D6       		.byte	-42
+ 1034 03f1 01       		.byte	1
+ 1035 03f2 04       		.byte	4
+ 1036 03f3 18       		.byte	24
+ 1037 03f4 07       		.byte	7
+ 1038 03f5 02       		.byte	2
+ 1039 03f6 08       		.byte	8
+ 1040 03f7 18       		.byte	24
+ 1041 03f8 0B       		.byte	11
+ 1042 03f9 02       		.byte	2
+ 1043 03fa 0C       		.byte	12
+ 1044 03fb 10       		.byte	16
+ 1045 03fc 0D       		.byte	13
+ 1046 03fd 04       		.byte	4
+ 1047 03fe 0E       		.byte	14
+ 1048 03ff 0C       		.byte	12
+ 1049 0400 10       		.byte	16
+ 1050 0401 08       		.byte	8
+ 1051 0402 12       		.byte	18
+ 1052 0403 14       		.byte	20
+ 1053 0404 15       		.byte	21
+ 1054 0405 04       		.byte	4
+ 1055 0406 16       		.byte	22
+ 1056 0407 01       		.byte	1
+ 1057 0408 18       		.byte	24
+ 1058 0409 01       		.byte	1
+ 1059 040a 19       		.byte	25
+ 1060 040b 04       		.byte	4
+ 1061 040c 1E       		.byte	30
+ 1062 040d 02       		.byte	2
+ 1063 040e 23       		.byte	35
+ 1064 040f 01       		.byte	1
+ 1065 0410 27       		.byte	39
+ 1066 0411 01       		.byte	1
+ 1067 0412 28       		.byte	40
+ 1068 0413 01       		.byte	1
+ 1069 0414 2E       		.byte	46
+ 1070 0415 01       		.byte	1
+ 1071 0416 30       		.byte	48
+ 1072 0417 18       		.byte	24
+ 1073 0418 31       		.byte	49
+ 1074 0419 02       		.byte	2
+ 1075 041a 34       		.byte	52
+ 1076 041b 01       		.byte	1
+ 1077 041c 35       		.byte	53
+ 1078 041d 01       		.byte	1
+ 1079 041e 36       		.byte	54
+ 1080 041f 06       		.byte	6
+ 1081 0420 37       		.byte	55
+ 1082 0421 04       		.byte	4
+ 1083 0422 38       		.byte	56
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 20
+
+
+ 1084 0423 20       		.byte	32
+ 1085 0424 3E       		.byte	62
+ 1086 0425 40       		.byte	64
+ 1087 0426 3F       		.byte	63
+ 1088 0427 11       		.byte	17
+ 1089 0428 40       		.byte	64
+ 1090 0429 35       		.byte	53
+ 1091 042a 41       		.byte	65
+ 1092 042b 06       		.byte	6
+ 1093 042c 42       		.byte	66
+ 1094 042d 02       		.byte	2
+ 1095 042e 44       		.byte	68
+ 1096 042f 01       		.byte	1
+ 1097 0430 45       		.byte	69
+ 1098 0431 E0       		.byte	-32
+ 1099 0432 47       		.byte	71
+ 1100 0433 0C       		.byte	12
+ 1101 0434 48       		.byte	72
+ 1102 0435 12       		.byte	18
+ 1103 0436 49       		.byte	73
+ 1104 0437 FF       		.byte	-1
+ 1105 0438 4A       		.byte	74
+ 1106 0439 FF       		.byte	-1
+ 1107 043a 4B       		.byte	75
+ 1108 043b FF       		.byte	-1
+ 1109 043c 4C       		.byte	76
+ 1110 043d 62       		.byte	98
+ 1111 043e 4D       		.byte	77
+ 1112 043f A0       		.byte	-96
+ 1113 0440 4E       		.byte	78
+ 1114 0441 F0       		.byte	-16
+ 1115 0442 4F       		.byte	79
+ 1116 0443 41       		.byte	65
+ 1117 0444 50       		.byte	80
+ 1118 0445 0C       		.byte	12
+ 1119 0446 58       		.byte	88
+ 1120 0447 04       		.byte	4
+ 1121 0448 59       		.byte	89
+ 1122 0449 04       		.byte	4
+ 1123 044a 5A       		.byte	90
+ 1124 044b 04       		.byte	4
+ 1125 044c 5F       		.byte	95
+ 1126 044d 01       		.byte	1
+ 1127 044e 66       		.byte	102
+ 1128 044f 40       		.byte	64
+ 1129 0450 67       		.byte	103
+ 1130 0451 02       		.byte	2
+ 1131 0452 69       		.byte	105
+ 1132 0453 10       		.byte	16
+ 1133 0454 6A       		.byte	106
+ 1134 0455 30       		.byte	48
+ 1135 0456 6B       		.byte	107
+ 1136 0457 10       		.byte	16
+ 1137 0458 6D       		.byte	109
+ 1138 0459 10       		.byte	16
+ 1139 045a 6E       		.byte	110
+ 1140 045b 10       		.byte	16
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 21
+
+
+ 1141 045c 6F       		.byte	111
+ 1142 045d 12       		.byte	18
+ 1143 045e 8C       		.byte	-116
+ 1144 045f 03       		.byte	3
+ 1145 0460 93       		.byte	-109
+ 1146 0461 01       		.byte	1
+ 1147 0462 96       		.byte	-106
+ 1148 0463 01       		.byte	1
+ 1149 0464 9B       		.byte	-101
+ 1150 0465 04       		.byte	4
+ 1151 0466 9C       		.byte	-100
+ 1152 0467 04       		.byte	4
+ 1153 0468 9F       		.byte	-97
+ 1154 0469 0C       		.byte	12
+ 1155 046a A1       		.byte	-95
+ 1156 046b 03       		.byte	3
+ 1157 046c A4       		.byte	-92
+ 1158 046d 04       		.byte	4
+ 1159 046e A7       		.byte	-89
+ 1160 046f 08       		.byte	8
+ 1161 0470 AA       		.byte	-86
+ 1162 0471 02       		.byte	2
+ 1163 0472 AB       		.byte	-85
+ 1164 0473 02       		.byte	2
+ 1165 0474 B0       		.byte	-80
+ 1166 0475 03       		.byte	3
+ 1167 0476 B1       		.byte	-79
+ 1168 0477 0C       		.byte	12
+ 1169 0478 B3       		.byte	-77
+ 1170 0479 03       		.byte	3
+ 1171 047a B6       		.byte	-74
+ 1172 047b 04       		.byte	4
+ 1173 047c B8       		.byte	-72
+ 1174 047d 80       		.byte	-128
+ 1175 047e D4       		.byte	-44
+ 1176 047f 07       		.byte	7
+ 1177 0480 D8       		.byte	-40
+ 1178 0481 04       		.byte	4
+ 1179 0482 D9       		.byte	-39
+ 1180 0483 04       		.byte	4
+ 1181 0484 DB       		.byte	-37
+ 1182 0485 04       		.byte	4
+ 1183 0486 DC       		.byte	-36
+ 1184 0487 11       		.byte	17
+ 1185 0488 DD       		.byte	-35
+ 1186 0489 10       		.byte	16
+ 1187 048a DF       		.byte	-33
+ 1188 048b 01       		.byte	1
+ 1189 048c 00       		.byte	0
+ 1190 048d 40       		.byte	64
+ 1191 048e 01       		.byte	1
+ 1192 048f 04       		.byte	4
+ 1193 0490 03       		.byte	3
+ 1194 0491 14       		.byte	20
+ 1195 0492 07       		.byte	7
+ 1196 0493 02       		.byte	2
+ 1197 0494 08       		.byte	8
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 22
+
+
+ 1198 0495 22       		.byte	34
+ 1199 0496 0A       		.byte	10
+ 1200 0497 11       		.byte	17
+ 1201 0498 0E       		.byte	14
+ 1202 0499 22       		.byte	34
+ 1203 049a 10       		.byte	16
+ 1204 049b 01       		.byte	1
+ 1205 049c 12       		.byte	18
+ 1206 049d 08       		.byte	8
+ 1207 049e 16       		.byte	22
+ 1208 049f 28       		.byte	40
+ 1209 04a0 18       		.byte	24
+ 1210 04a1 41       		.byte	65
+ 1211 04a2 19       		.byte	25
+ 1212 04a3 02       		.byte	2
+ 1213 04a4 1B       		.byte	27
+ 1214 04a5 10       		.byte	16
+ 1215 04a6 1E       		.byte	30
+ 1216 04a7 80       		.byte	-128
+ 1217 04a8 1F       		.byte	31
+ 1218 04a9 80       		.byte	-128
+ 1219 04aa 20       		.byte	32
+ 1220 04ab 06       		.byte	6
+ 1221 04ac 22       		.byte	34
+ 1222 04ad 81       		.byte	-127
+ 1223 04ae 25       		.byte	37
+ 1224 04af 01       		.byte	1
+ 1225 04b0 27       		.byte	39
+ 1226 04b1 20       		.byte	32
+ 1227 04b2 29       		.byte	41
+ 1228 04b3 01       		.byte	1
+ 1229 04b4 2B       		.byte	43
+ 1230 04b5 10       		.byte	16
+ 1231 04b6 2E       		.byte	46
+ 1232 04b7 28       		.byte	40
+ 1233 04b8 2F       		.byte	47
+ 1234 04b9 98       		.byte	-104
+ 1235 04ba 33       		.byte	51
+ 1236 04bb 14       		.byte	20
+ 1237 04bc 36       		.byte	54
+ 1238 04bd 13       		.byte	19
+ 1239 04be 37       		.byte	55
+ 1240 04bf 80       		.byte	-128
+ 1241 04c0 38       		.byte	56
+ 1242 04c1 08       		.byte	8
+ 1243 04c2 39       		.byte	57
+ 1244 04c3 60       		.byte	96
+ 1245 04c4 40       		.byte	64
+ 1246 04c5 31       		.byte	49
+ 1247 04c6 41       		.byte	65
+ 1248 04c7 10       		.byte	16
+ 1249 04c8 48       		.byte	72
+ 1250 04c9 01       		.byte	1
+ 1251 04ca 49       		.byte	73
+ 1252 04cb 21       		.byte	33
+ 1253 04cc 4A       		.byte	74
+ 1254 04cd 08       		.byte	8
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 23
+
+
+ 1255 04ce 50       		.byte	80
+ 1256 04cf 04       		.byte	4
+ 1257 04d0 5E       		.byte	94
+ 1258 04d1 88       		.byte	-120
+ 1259 04d2 5F       		.byte	95
+ 1260 04d3 21       		.byte	33
+ 1261 04d4 89       		.byte	-119
+ 1262 04d5 80       		.byte	-128
+ 1263 04d6 8A       		.byte	-118
+ 1264 04d7 01       		.byte	1
+ 1265 04d8 C0       		.byte	-64
+ 1266 04d9 87       		.byte	-121
+ 1267 04da C2       		.byte	-62
+ 1268 04db AF       		.byte	-81
+ 1269 04dc C4       		.byte	-60
+ 1270 04dd 63       		.byte	99
+ 1271 04de CA       		.byte	-54
+ 1272 04df E3       		.byte	-29
+ 1273 04e0 CC       		.byte	-52
+ 1274 04e1 B6       		.byte	-74
+ 1275 04e2 CE       		.byte	-50
+ 1276 04e3 0E       		.byte	14
+ 1277 04e4 D0       		.byte	-48
+ 1278 04e5 0E       		.byte	14
+ 1279 04e6 D2       		.byte	-46
+ 1280 04e7 0C       		.byte	12
+ 1281 04e8 D6       		.byte	-42
+ 1282 04e9 F0       		.byte	-16
+ 1283 04ea B6       		.byte	-74
+ 1284 04eb 48       		.byte	72
+ 1285 04ec 33       		.byte	51
+ 1286 04ed 40       		.byte	64
+ 1287 04ee 35       		.byte	53
+ 1288 04ef 80       		.byte	-128
+ 1289 04f0 CC       		.byte	-52
+ 1290 04f1 30       		.byte	48
+ 1291 04f2 9D       		.byte	-99
+ 1292 04f3 80       		.byte	-128
+ 1293 04f4 9F       		.byte	-97
+ 1294 04f5 40       		.byte	64
+ 1295 04f6 81       		.byte	-127
+ 1296 04f7 80       		.byte	-128
+ 1297 04f8 9D       		.byte	-99
+ 1298 04f9 80       		.byte	-128
+ 1299 04fa 9F       		.byte	-97
+ 1300 04fb 40       		.byte	64
+ 1301 04fc E2       		.byte	-30
+ 1302 04fd 20       		.byte	32
+ 1303 04fe 9F       		.byte	-97
+ 1304 04ff 40       		.byte	64
+ 1305 0500 00       		.byte	0
+ 1306 0501 08       		.byte	8
+ 1307 0502 57       		.byte	87
+ 1308 0503 80       		.byte	-128
+ 1309 0504 58       		.byte	88
+ 1310 0505 80       		.byte	-128
+ 1311 0506 5C       		.byte	92
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 24
+
+
+ 1312 0507 10       		.byte	16
+ 1313 0508 90       		.byte	-112
+ 1314 0509 10       		.byte	16
+ 1315 050a B4       		.byte	-76
+ 1316 050b 10       		.byte	16
+ 1317 050c C0       		.byte	-64
+ 1318 050d 08       		.byte	8
+ 1319 050e D4       		.byte	-44
+ 1320 050f 03       		.byte	3
+ 1321 0510 D6       		.byte	-42
+ 1322 0511 04       		.byte	4
+ 1323 0512 E8       		.byte	-24
+ 1324 0513 08       		.byte	8
+ 1325 0514 88       		.byte	-120
+ 1326 0515 80       		.byte	-128
+ 1327 0516 9C       		.byte	-100
+ 1328 0517 80       		.byte	-128
+ 1329 0518 B0       		.byte	-80
+ 1330 0519 04       		.byte	4
+ 1331 051a B7       		.byte	-73
+ 1332 051b 80       		.byte	-128
+ 1333 051c E0       		.byte	-32
+ 1334 051d 04       		.byte	4
+ 1335 051e E8       		.byte	-24
+ 1336 051f 02       		.byte	2
+ 1337 0520 EA       		.byte	-22
+ 1338 0521 04       		.byte	4
+ 1339 0522 27       		.byte	39
+ 1340 0523 40       		.byte	64
+ 1341 0524 9F       		.byte	-97
+ 1342 0525 40       		.byte	64
+ 1343 0526 C8       		.byte	-56
+ 1344 0527 80       		.byte	-128
+ 1345 0528 00       		.byte	0
+ 1346 0529 03       		.byte	3
+ 1347 052a 0C       		.byte	12
+ 1348 052b 03       		.byte	3
+ 1349 052c 0E       		.byte	14
+ 1350 052d 03       		.byte	3
+ 1351 052e 00       		.byte	0
+ 1352 052f 0F       		.byte	15
+ 1353 0530 30       		.byte	48
+ 1354 0531 00       		.byte	0
+ 1355 0532 00       		.byte	0
+ 1356 0533 30       		.byte	48
+ 1357 0534 30       		.byte	48
+ 1358 0535 00       		.byte	0
+ 1359 0536 00       		.byte	0
+ 1360 0537 00       		.byte	0
+ 1361 0538 00       		.byte	0
+ 1362 0539 00       		.byte	0
+ 1363 053a 00       		.byte	0
+ 1364 053b 00       		.byte	0
+ 1365 053c 00       		.byte	0
+ 1366 053d 30       		.byte	48
+ 1367 053e 30       		.byte	48
+ 1368 053f 00       		.byte	0
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 25
+
+
+ 1369 0540 00       		.byte	0
+ 1370 0541 00       		.byte	0
+ 1371 0542 00       		.byte	0
+ 1372 0543 00       		.byte	0
+ 1373 0544 00       		.byte	0
+ 1374 0545 0B       		.byte	11
+ 1375 0546 0B       		.byte	11
+ 1376 0547 00       		.byte	0
+ 1377 0548 00       		.byte	0
+ 1378 0549 00       		.byte	0
+ 1379 054a 00       		.byte	0
+ 1380 054b 00       		.byte	0
+ 1381 054c F6       		.byte	-10
+ 1382 054d 00       		.byte	0
+ 1383 054e 01       		.byte	1
+ 1384 054f FE       		.byte	-2
+ 1385 0550 FE       		.byte	-2
+ 1386 0551 00       		.byte	0
+ 1387 0552 0E       		.byte	14
+ 1388 0553 00       		.byte	0
+ 1389 0554 00       		.byte	0
+ 1390 0555 00       		.byte	0
+ 1391 0556 00       		.byte	0
+ 1392 0557 00       		.byte	0
+ 1393 0558 3F       		.byte	63
+ 1394 0559 00       		.byte	0
+ 1395 055a 00       		.byte	0
+ 1396 055b 3F       		.byte	63
+ 1397 055c 1C       		.byte	28
+ 1398 055d 00       		.byte	0
+ 1399 055e 00       		.byte	0
+ 1400 055f 00       		.byte	0
+ 1401 0560 00       		.byte	0
+ 1402 0561 00       		.byte	0
+ 1403 0562 00       		.byte	0
+ 1404 0563 00       		.byte	0
+ 1405              		.global	cy_meta_custnvl
+ 1406              		.section	.cycustnvl,"a",%progbits
+ 1407              		.align	2
+ 1408              		.type	cy_meta_custnvl, %object
+ 1409              		.size	cy_meta_custnvl, 4
+ 1410              	cy_meta_custnvl:
+ 1411 0000 00       		.byte	0
+ 1412 0001 00       		.byte	0
+ 1413 0002 40       		.byte	64
+ 1414 0003 05       		.byte	5
+ 1415              		.global	cy_meta_wonvl
+ 1416              		.section	.cywolatch,"a",%progbits
+ 1417              		.align	2
+ 1418              		.type	cy_meta_wonvl, %object
+ 1419              		.size	cy_meta_wonvl, 4
+ 1420              	cy_meta_wonvl:
+ 1421 0000 BC       		.byte	-68
+ 1422 0001 90       		.byte	-112
+ 1423 0002 AC       		.byte	-84
+ 1424 0003 AF       		.byte	-81
+ 1425              		.global	cy_meta_flashprotect
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 26
+
+
+ 1426              		.section	.cyflashprotect,"a",%progbits
+ 1427              		.align	2
+ 1428              		.type	cy_meta_flashprotect, %object
+ 1429              		.size	cy_meta_flashprotect, 256
+ 1430              	cy_meta_flashprotect:
+ 1431 0000 00000000 		.space	256
+ 1431      00000000 
+ 1431      00000000 
+ 1431      00000000 
+ 1431      00000000 
+ 1432              		.global	cy_metadata
+ 1433              		.section	.cymeta,"a",%progbits
+ 1434              		.align	2
+ 1435              		.type	cy_metadata, %object
+ 1436              		.size	cy_metadata, 12
+ 1437              	cy_metadata:
+ 1438 0000 00       		.byte	0
+ 1439 0001 01       		.byte	1
+ 1440 0002 2E       		.byte	46
+ 1441 0003 16       		.byte	22
+ 1442 0004 00       		.byte	0
+ 1443 0005 69       		.byte	105
+ 1444 0006 00       		.byte	0
+ 1445 0007 01       		.byte	1
+ 1446 0008 00       		.byte	0
+ 1447 0009 00       		.byte	0
+ 1448 000a 00       		.byte	0
+ 1449 000b 00       		.byte	0
+ 1450              		.text
+ 1451              	.Letext0:
+ 1452              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1453              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1454              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 1455              		.section	.debug_info,"",%progbits
+ 1456              	.Ldebug_info0:
+ 1457 0000 32010000 		.4byte	0x132
+ 1458 0004 0400     		.2byte	0x4
+ 1459 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1460 000a 04       		.byte	0x4
+ 1461 000b 01       		.uleb128 0x1
+ 1462 000c 0A000000 		.4byte	.LASF17
+ 1463 0010 0C       		.byte	0xc
+ 1464 0011 EC010000 		.4byte	.LASF18
+ 1465 0015 D7000000 		.4byte	.LASF19
+ 1466 0019 00000000 		.4byte	.Ldebug_line0
+ 1467 001d 02       		.uleb128 0x2
+ 1468 001e 01       		.byte	0x1
+ 1469 001f 06       		.byte	0x6
+ 1470 0020 E0010000 		.4byte	.LASF0
+ 1471 0024 03       		.uleb128 0x3
+ 1472 0025 00000000 		.4byte	.LASF9
+ 1473 0029 01       		.byte	0x1
+ 1474 002a 1D       		.byte	0x1d
+ 1475 002b 2F000000 		.4byte	0x2f
+ 1476 002f 02       		.uleb128 0x2
+ 1477 0030 01       		.byte	0x1
+ 1478 0031 08       		.byte	0x8
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 27
+
+
+ 1479 0032 A4000000 		.4byte	.LASF1
+ 1480 0036 02       		.uleb128 0x2
+ 1481 0037 02       		.byte	0x2
+ 1482 0038 05       		.byte	0x5
+ 1483 0039 CD010000 		.4byte	.LASF2
+ 1484 003d 02       		.uleb128 0x2
+ 1485 003e 02       		.byte	0x2
+ 1486 003f 07       		.byte	0x7
+ 1487 0040 C4000000 		.4byte	.LASF3
+ 1488 0044 02       		.uleb128 0x2
+ 1489 0045 04       		.byte	0x4
+ 1490 0046 05       		.byte	0x5
+ 1491 0047 D7010000 		.4byte	.LASF4
+ 1492 004b 02       		.uleb128 0x2
+ 1493 004c 04       		.byte	0x4
+ 1494 004d 07       		.byte	0x7
+ 1495 004e B2000000 		.4byte	.LASF5
+ 1496 0052 02       		.uleb128 0x2
+ 1497 0053 08       		.byte	0x8
+ 1498 0054 05       		.byte	0x5
+ 1499 0055 BF010000 		.4byte	.LASF6
+ 1500 0059 02       		.uleb128 0x2
+ 1501 005a 08       		.byte	0x8
+ 1502 005b 07       		.byte	0x7
+ 1503 005c 74010000 		.4byte	.LASF7
+ 1504 0060 04       		.uleb128 0x4
+ 1505 0061 04       		.byte	0x4
+ 1506 0062 05       		.byte	0x5
+ 1507 0063 696E7400 		.ascii	"int\000"
+ 1508 0067 02       		.uleb128 0x2
+ 1509 0068 04       		.byte	0x4
+ 1510 0069 07       		.byte	0x7
+ 1511 006a 67010000 		.4byte	.LASF8
+ 1512 006e 03       		.uleb128 0x3
+ 1513 006f 8B010000 		.4byte	.LASF10
+ 1514 0073 02       		.byte	0x2
+ 1515 0074 18       		.byte	0x18
+ 1516 0075 24000000 		.4byte	0x24
+ 1517 0079 05       		.uleb128 0x5
+ 1518 007a 91000000 		.4byte	0x91
+ 1519 007e 8A000000 		.4byte	0x8a
+ 1520 0082 06       		.uleb128 0x6
+ 1521 0083 8A000000 		.4byte	0x8a
+ 1522 0087 6305     		.2byte	0x563
+ 1523 0089 00       		.byte	0
+ 1524 008a 02       		.uleb128 0x2
+ 1525 008b 04       		.byte	0x4
+ 1526 008c 07       		.byte	0x7
+ 1527 008d B6010000 		.4byte	.LASF11
+ 1528 0091 07       		.uleb128 0x7
+ 1529 0092 6E000000 		.4byte	0x6e
+ 1530 0096 08       		.uleb128 0x8
+ 1531 0097 55010000 		.4byte	.LASF12
+ 1532 009b 03       		.byte	0x3
+ 1533 009c 1F       		.byte	0x1f
+ 1534 009d A7000000 		.4byte	0xa7
+ 1535 00a1 05       		.uleb128 0x5
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 28
+
+
+ 1536 00a2 03       		.byte	0x3
+ 1537 00a3 00000000 		.4byte	cy_meta_configecc
+ 1538 00a7 07       		.uleb128 0x7
+ 1539 00a8 79000000 		.4byte	0x79
+ 1540 00ac 05       		.uleb128 0x5
+ 1541 00ad 91000000 		.4byte	0x91
+ 1542 00b1 BC000000 		.4byte	0xbc
+ 1543 00b5 09       		.uleb128 0x9
+ 1544 00b6 8A000000 		.4byte	0x8a
+ 1545 00ba 03       		.byte	0x3
+ 1546 00bb 00       		.byte	0
+ 1547 00bc 08       		.uleb128 0x8
+ 1548 00bd 45010000 		.4byte	.LASF13
+ 1549 00c1 03       		.byte	0x3
+ 1550 00c2 D9       		.byte	0xd9
+ 1551 00c3 CD000000 		.4byte	0xcd
+ 1552 00c7 05       		.uleb128 0x5
+ 1553 00c8 03       		.byte	0x3
+ 1554 00c9 00000000 		.4byte	cy_meta_custnvl
+ 1555 00cd 07       		.uleb128 0x7
+ 1556 00ce AC000000 		.4byte	0xac
+ 1557 00d2 08       		.uleb128 0x8
+ 1558 00d3 A8010000 		.4byte	.LASF14
+ 1559 00d7 03       		.byte	0x3
+ 1560 00d8 E7       		.byte	0xe7
+ 1561 00d9 E3000000 		.4byte	0xe3
+ 1562 00dd 05       		.uleb128 0x5
+ 1563 00de 03       		.byte	0x3
+ 1564 00df 00000000 		.4byte	cy_meta_wonvl
+ 1565 00e3 07       		.uleb128 0x7
+ 1566 00e4 AC000000 		.4byte	0xac
+ 1567 00e8 05       		.uleb128 0x5
+ 1568 00e9 91000000 		.4byte	0x91
+ 1569 00ed F8000000 		.4byte	0xf8
+ 1570 00f1 09       		.uleb128 0x9
+ 1571 00f2 8A000000 		.4byte	0x8a
+ 1572 00f6 FF       		.byte	0xff
+ 1573 00f7 00       		.byte	0
+ 1574 00f8 08       		.uleb128 0x8
+ 1575 00f9 93010000 		.4byte	.LASF15
+ 1576 00fd 03       		.byte	0x3
+ 1577 00fe F5       		.byte	0xf5
+ 1578 00ff 09010000 		.4byte	0x109
+ 1579 0103 05       		.uleb128 0x5
+ 1580 0104 03       		.byte	0x3
+ 1581 0105 00000000 		.4byte	cy_meta_flashprotect
+ 1582 0109 07       		.uleb128 0x7
+ 1583 010a E8000000 		.4byte	0xe8
+ 1584 010e 05       		.uleb128 0x5
+ 1585 010f 91000000 		.4byte	0x91
+ 1586 0113 1E010000 		.4byte	0x11e
+ 1587 0117 09       		.uleb128 0x9
+ 1588 0118 8A000000 		.4byte	0x8a
+ 1589 011c 0B       		.byte	0xb
+ 1590 011d 00       		.byte	0
+ 1591 011e 0A       		.uleb128 0xa
+ 1592 011f 98000000 		.4byte	.LASF16
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 29
+
+
+ 1593 0123 03       		.byte	0x3
+ 1594 0124 2201     		.2byte	0x122
+ 1595 0126 30010000 		.4byte	0x130
+ 1596 012a 05       		.uleb128 0x5
+ 1597 012b 03       		.byte	0x3
+ 1598 012c 00000000 		.4byte	cy_metadata
+ 1599 0130 07       		.uleb128 0x7
+ 1600 0131 0E010000 		.4byte	0x10e
+ 1601 0135 00       		.byte	0
+ 1602              		.section	.debug_abbrev,"",%progbits
+ 1603              	.Ldebug_abbrev0:
+ 1604 0000 01       		.uleb128 0x1
+ 1605 0001 11       		.uleb128 0x11
+ 1606 0002 01       		.byte	0x1
+ 1607 0003 25       		.uleb128 0x25
+ 1608 0004 0E       		.uleb128 0xe
+ 1609 0005 13       		.uleb128 0x13
+ 1610 0006 0B       		.uleb128 0xb
+ 1611 0007 03       		.uleb128 0x3
+ 1612 0008 0E       		.uleb128 0xe
+ 1613 0009 1B       		.uleb128 0x1b
+ 1614 000a 0E       		.uleb128 0xe
+ 1615 000b 10       		.uleb128 0x10
+ 1616 000c 17       		.uleb128 0x17
+ 1617 000d 00       		.byte	0
+ 1618 000e 00       		.byte	0
+ 1619 000f 02       		.uleb128 0x2
+ 1620 0010 24       		.uleb128 0x24
+ 1621 0011 00       		.byte	0
+ 1622 0012 0B       		.uleb128 0xb
+ 1623 0013 0B       		.uleb128 0xb
+ 1624 0014 3E       		.uleb128 0x3e
+ 1625 0015 0B       		.uleb128 0xb
+ 1626 0016 03       		.uleb128 0x3
+ 1627 0017 0E       		.uleb128 0xe
+ 1628 0018 00       		.byte	0
+ 1629 0019 00       		.byte	0
+ 1630 001a 03       		.uleb128 0x3
+ 1631 001b 16       		.uleb128 0x16
+ 1632 001c 00       		.byte	0
+ 1633 001d 03       		.uleb128 0x3
+ 1634 001e 0E       		.uleb128 0xe
+ 1635 001f 3A       		.uleb128 0x3a
+ 1636 0020 0B       		.uleb128 0xb
+ 1637 0021 3B       		.uleb128 0x3b
+ 1638 0022 0B       		.uleb128 0xb
+ 1639 0023 49       		.uleb128 0x49
+ 1640 0024 13       		.uleb128 0x13
+ 1641 0025 00       		.byte	0
+ 1642 0026 00       		.byte	0
+ 1643 0027 04       		.uleb128 0x4
+ 1644 0028 24       		.uleb128 0x24
+ 1645 0029 00       		.byte	0
+ 1646 002a 0B       		.uleb128 0xb
+ 1647 002b 0B       		.uleb128 0xb
+ 1648 002c 3E       		.uleb128 0x3e
+ 1649 002d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 30
+
+
+ 1650 002e 03       		.uleb128 0x3
+ 1651 002f 08       		.uleb128 0x8
+ 1652 0030 00       		.byte	0
+ 1653 0031 00       		.byte	0
+ 1654 0032 05       		.uleb128 0x5
+ 1655 0033 01       		.uleb128 0x1
+ 1656 0034 01       		.byte	0x1
+ 1657 0035 49       		.uleb128 0x49
+ 1658 0036 13       		.uleb128 0x13
+ 1659 0037 01       		.uleb128 0x1
+ 1660 0038 13       		.uleb128 0x13
+ 1661 0039 00       		.byte	0
+ 1662 003a 00       		.byte	0
+ 1663 003b 06       		.uleb128 0x6
+ 1664 003c 21       		.uleb128 0x21
+ 1665 003d 00       		.byte	0
+ 1666 003e 49       		.uleb128 0x49
+ 1667 003f 13       		.uleb128 0x13
+ 1668 0040 2F       		.uleb128 0x2f
+ 1669 0041 05       		.uleb128 0x5
+ 1670 0042 00       		.byte	0
+ 1671 0043 00       		.byte	0
+ 1672 0044 07       		.uleb128 0x7
+ 1673 0045 26       		.uleb128 0x26
+ 1674 0046 00       		.byte	0
+ 1675 0047 49       		.uleb128 0x49
+ 1676 0048 13       		.uleb128 0x13
+ 1677 0049 00       		.byte	0
+ 1678 004a 00       		.byte	0
+ 1679 004b 08       		.uleb128 0x8
+ 1680 004c 34       		.uleb128 0x34
+ 1681 004d 00       		.byte	0
+ 1682 004e 03       		.uleb128 0x3
+ 1683 004f 0E       		.uleb128 0xe
+ 1684 0050 3A       		.uleb128 0x3a
+ 1685 0051 0B       		.uleb128 0xb
+ 1686 0052 3B       		.uleb128 0x3b
+ 1687 0053 0B       		.uleb128 0xb
+ 1688 0054 49       		.uleb128 0x49
+ 1689 0055 13       		.uleb128 0x13
+ 1690 0056 3F       		.uleb128 0x3f
+ 1691 0057 19       		.uleb128 0x19
+ 1692 0058 02       		.uleb128 0x2
+ 1693 0059 18       		.uleb128 0x18
+ 1694 005a 00       		.byte	0
+ 1695 005b 00       		.byte	0
+ 1696 005c 09       		.uleb128 0x9
+ 1697 005d 21       		.uleb128 0x21
+ 1698 005e 00       		.byte	0
+ 1699 005f 49       		.uleb128 0x49
+ 1700 0060 13       		.uleb128 0x13
+ 1701 0061 2F       		.uleb128 0x2f
+ 1702 0062 0B       		.uleb128 0xb
+ 1703 0063 00       		.byte	0
+ 1704 0064 00       		.byte	0
+ 1705 0065 0A       		.uleb128 0xa
+ 1706 0066 34       		.uleb128 0x34
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 31
+
+
+ 1707 0067 00       		.byte	0
+ 1708 0068 03       		.uleb128 0x3
+ 1709 0069 0E       		.uleb128 0xe
+ 1710 006a 3A       		.uleb128 0x3a
+ 1711 006b 0B       		.uleb128 0xb
+ 1712 006c 3B       		.uleb128 0x3b
+ 1713 006d 05       		.uleb128 0x5
+ 1714 006e 49       		.uleb128 0x49
+ 1715 006f 13       		.uleb128 0x13
+ 1716 0070 3F       		.uleb128 0x3f
+ 1717 0071 19       		.uleb128 0x19
+ 1718 0072 02       		.uleb128 0x2
+ 1719 0073 18       		.uleb128 0x18
+ 1720 0074 00       		.byte	0
+ 1721 0075 00       		.byte	0
+ 1722 0076 00       		.byte	0
+ 1723              		.section	.debug_aranges,"",%progbits
+ 1724 0000 14000000 		.4byte	0x14
+ 1725 0004 0200     		.2byte	0x2
+ 1726 0006 00000000 		.4byte	.Ldebug_info0
+ 1727 000a 04       		.byte	0x4
+ 1728 000b 00       		.byte	0
+ 1729 000c 0000     		.2byte	0
+ 1730 000e 0000     		.2byte	0
+ 1731 0010 00000000 		.4byte	0
+ 1732 0014 00000000 		.4byte	0
+ 1733              		.section	.debug_line,"",%progbits
+ 1734              	.Ldebug_line0:
+ 1735 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 1735      02003701 
+ 1735      00000201 
+ 1735      FB0E0D00 
+ 1735      01010101 
+ 1736              	.LASF9:
+ 1737 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1737      6E74385F 
+ 1737      7400
+ 1738              	.LASF17:
+ 1739 000a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1739      43313120 
+ 1739      352E342E 
+ 1739      31203230 
+ 1739      31363036 
+ 1740 003d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1740      20726576 
+ 1740      6973696F 
+ 1740      6E203233 
+ 1740      37373135 
+ 1741 0070 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1741      66756E63 
+ 1741      74696F6E 
+ 1741      2D736563 
+ 1741      74696F6E 
+ 1742              	.LASF16:
+ 1743 0098 63795F6D 		.ascii	"cy_metadata\000"
+ 1743      65746164 
+ 1743      61746100 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 32
+
+
+ 1744              	.LASF1:
+ 1745 00a4 756E7369 		.ascii	"unsigned char\000"
+ 1745      676E6564 
+ 1745      20636861 
+ 1745      7200
+ 1746              	.LASF5:
+ 1747 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1747      20756E73 
+ 1747      69676E65 
+ 1747      6420696E 
+ 1747      7400
+ 1748              	.LASF3:
+ 1749 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1749      7420756E 
+ 1749      7369676E 
+ 1749      65642069 
+ 1749      6E7400
+ 1750              	.LASF19:
+ 1751 00d7 443A5C44 		.ascii	"D:\\Dokumente\\Programming\\Uni\\Semester-3\\MPS\\m"
+ 1751      6F6B756D 
+ 1751      656E7465 
+ 1751      5C50726F 
+ 1751      6772616D 
+ 1752 0104 6936795F 		.ascii	"i6y_ws2122_zill-sebastian-769544\\Praktikum_4\\MPS2"
+ 1752      77733231 
+ 1752      32325F7A 
+ 1752      696C6C2D 
+ 1752      73656261 
+ 1753 0135 315F5072 		.ascii	"1_Prakt_4.cydsn\000"
+ 1753      616B745F 
+ 1753      342E6379 
+ 1753      64736E00 
+ 1754              	.LASF13:
+ 1755 0145 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 1755      6574615F 
+ 1755      63757374 
+ 1755      6E766C00 
+ 1756              	.LASF12:
+ 1757 0155 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1757      6574615F 
+ 1757      636F6E66 
+ 1757      69676563 
+ 1757      6300
+ 1758              	.LASF8:
+ 1759 0167 756E7369 		.ascii	"unsigned int\000"
+ 1759      676E6564 
+ 1759      20696E74 
+ 1759      00
+ 1760              	.LASF7:
+ 1761 0174 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1761      206C6F6E 
+ 1761      6720756E 
+ 1761      7369676E 
+ 1761      65642069 
+ 1762              	.LASF10:
+ 1763 018b 75696E74 		.ascii	"uint8_t\000"
+ 1763      385F7400 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccBylliT.s 			page 33
+
+
+ 1764              	.LASF15:
+ 1765 0193 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 1765      6574615F 
+ 1765      666C6173 
+ 1765      6870726F 
+ 1765      74656374 
+ 1766              	.LASF14:
+ 1767 01a8 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 1767      6574615F 
+ 1767      776F6E76 
+ 1767      6C00
+ 1768              	.LASF11:
+ 1769 01b6 73697A65 		.ascii	"sizetype\000"
+ 1769      74797065 
+ 1769      00
+ 1770              	.LASF6:
+ 1771 01bf 6C6F6E67 		.ascii	"long long int\000"
+ 1771      206C6F6E 
+ 1771      6720696E 
+ 1771      7400
+ 1772              	.LASF2:
+ 1773 01cd 73686F72 		.ascii	"short int\000"
+ 1773      7420696E 
+ 1773      7400
+ 1774              	.LASF4:
+ 1775 01d7 6C6F6E67 		.ascii	"long int\000"
+ 1775      20696E74 
+ 1775      00
+ 1776              	.LASF0:
+ 1777 01e0 7369676E 		.ascii	"signed char\000"
+ 1777      65642063 
+ 1777      68617200 
+ 1778              	.LASF18:
+ 1779 01ec 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1779      72617465 
+ 1779      645F536F 
+ 1779      75726365 
+ 1779      5C50536F 
+ 1780              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

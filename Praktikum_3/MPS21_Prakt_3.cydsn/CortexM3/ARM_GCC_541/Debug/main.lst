@@ -1,0 +1,1314 @@
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.bss
+  20              		.align	2
+  21              	buffer:
+  22 0000 00000000 		.space	128
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  23              	cRx:
+  24 0080 00       		.space	1
+  25              		.section	.text.MyIsrUartRX,"ax",%progbits
+  26              		.align	2
+  27              		.global	MyIsrUartRX
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	MyIsrUartRX, %function
+  31              	MyIsrUartRX:
+  32              	.LFB64:
+  33              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright R. Mayer, h_da, FbI, 2019
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        ****  */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include "main.h"
+  14:main.c        **** #include <stdio.h>          // für string-Operationen wie sprintf
+  15:main.c        **** 
+  16:main.c        **** /*
+  17:main.c        ****  * Diese Definitionen ermöglichen es, 
+  18:main.c        ****  * einfach Informationen auf den Bildschirm zu schreiben
+  19:main.c        ****  */
+  20:main.c        **** #define _VERSION_NR     "ver. 1.0"              //!< Version number. Please update
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 2
+
+
+  21:main.c        **** #define _PROJECT_NAME   "MPS21_Prakt_3"         //!< Project name
+  22:main.c        **** #define _PROCESSOR      "PSoC 5LP"              //!< Processor type
+  23:main.c        **** #define _DEVICE_NAME    "FreeSoC2"              //!< Board or device type
+  24:main.c        **** #define _AUTHOR_        "Sebastian Zill"
+  25:main.c        **** #define _COMPANY        "Template MPS 3"
+  26:main.c        **** // Makros für LED io (wieder) definieren
+  27:main.c        **** #define LED_ON  (0u)                //!< LED on (active low)
+  28:main.c        **** #define LED_OFF (1u)                //!< LED off (active low)
+  29:main.c        **** /* ++++++++++++++++++++++++++++++++++
+  30:main.c        ****  * +++ Switche für Musterlösungen +++ 
+  31:main.c        ****  * ++++++++++++++++++++++++++++++++++ */
+  32:main.c        **** 
+  33:main.c        **** // String für die Anzeige zusammenbauen
+  34:main.c        **** #define _VERSTR_       (_PROJECT_NAME", "_DEVICE_NAME", "_PROCESSOR", "_VERSION_NR"\n\r"\
+  35:main.c        **** _AUTHOR_" ("_COMPANY"), "__DATE__" "__TIME__)
+  36:main.c        **** 
+  37:main.c        **** /* 
+  38:main.c        ****  * String Buffer für Anzeige am Bildschirm anlegen.
+  39:main.c        ****  * Auf die maximale Größe achten!
+  40:main.c        ****  */
+  41:main.c        **** #define BUFFER_SIZE 128             //!< string output buffer size for sprintf
+  42:main.c        **** static char buffer[BUFFER_SIZE];    //!< buffer (global) for sprintf
+  43:main.c        **** 
+  44:main.c        **** static char cRx = 0;                //!< character from UART, visible within main.c
+  45:main.c        **** /** 
+  46:main.c        ****  * UART RX interrupt service routine.
+  47:main.c        ****  *
+  48:main.c        ****  * Collect a characters from UART into a global input variable.
+  49:main.c        ****  * @see cRx
+  50:main.c        ****  */
+  51:main.c        **** CY_ISR( MyIsrUartRX )
+  52:main.c        **** {
+  34              		.loc 1 52 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  53:main.c        ****     cRx = UART_GetChar();       // read and copy char
+  44              		.loc 1 53 0
+  45 0004 FFF7FEFF 		bl	UART_GetChar
+  46 0008 0346     		mov	r3, r0
+  47 000a 1A46     		mov	r2, r3
+  48 000c 014B     		ldr	r3, .L2
+  49 000e 1A70     		strb	r2, [r3]
+  54:main.c        **** }
+  50              		.loc 1 54 0
+  51 0010 00BF     		nop
+  52 0012 80BD     		pop	{r7, pc}
+  53              	.L3:
+  54              		.align	2
+  55              	.L2:
+  56 0014 80000000 		.word	cRx
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 3
+
+
+  57              		.cfi_endproc
+  58              	.LFE64:
+  59              		.size	MyIsrUartRX, .-MyIsrUartRX
+  60              		.bss
+  61              	fCWEW_Isr:
+  62 0081 00       		.space	1
+  63              		.section	.text.MyIsrCWEW,"ax",%progbits
+  64              		.align	2
+  65              		.global	MyIsrCWEW
+  66              		.thumb
+  67              		.thumb_func
+  68              		.type	MyIsrCWEW, %function
+  69              	MyIsrCWEW:
+  70              	.LFB65:
+  55:main.c        **** 
+  56:main.c        **** static uint8_t fCWEW_Isr = 0;   //!< flag CW EW button isr, visible within main.c
+  57:main.c        **** /** 
+  58:main.c        ****  * Interrupt isr_CWSN for button Pin_CWSN interrupt service routine.
+  59:main.c        ****  *
+  60:main.c        ****  * @see fCWEW_Isr
+  61:main.c        ****  */
+  62:main.c        **** CY_ISR( MyIsrCWEW ) // Wird bei Buttonpress ausgeführt
+  63:main.c        **** {
+  71              		.loc 1 63 0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 1, uses_anonymous_args = 0
+  75 0000 80B5     		push	{r7, lr}
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  64:main.c        ****     Pin_CWEW_ClearInterrupt();  // Clear Interrupt
+  81              		.loc 1 64 0
+  82 0004 FFF7FEFF 		bl	Pin_CWEW_ClearInterrupt
+  65:main.c        ****     fCWEW_Isr = 1;              // set flag 
+  83              		.loc 1 65 0
+  84 0008 024B     		ldr	r3, .L5
+  85 000a 0122     		movs	r2, #1
+  86 000c 1A70     		strb	r2, [r3]
+  66:main.c        **** }
+  87              		.loc 1 66 0
+  88 000e 00BF     		nop
+  89 0010 80BD     		pop	{r7, pc}
+  90              	.L6:
+  91 0012 00BF     		.align	2
+  92              	.L5:
+  93 0014 81000000 		.word	fCWEW_Isr
+  94              		.cfi_endproc
+  95              	.LFE65:
+  96              		.size	MyIsrCWEW, .-MyIsrCWEW
+  97              		.data
+  98              		.align	2
+  99              		.type	clk_count, %object
+ 100              		.size	clk_count, 4
+ 101              	clk_count:
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 4
+
+
+ 102 0000 01000000 		.word	1
+ 103              		.bss
+ 104              	clk_flag:
+ 105 0082 00       		.space	1
+ 106              		.section	.text.IsrAppClk,"ax",%progbits
+ 107              		.align	2
+ 108              		.global	IsrAppClk
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.type	IsrAppClk, %function
+ 112              	IsrAppClk:
+ 113              	.LFB66:
+  67:main.c        **** 
+  68:main.c        **** static int clk_count = 1;
+  69:main.c        **** static uint8_t clk_flag = 0;
+  70:main.c        **** /** 
+  71:main.c        ****  * Application clock interrupt service routine for isr_Clk
+  72:main.c        ****  *
+  73:main.c        ****  * @see fClock
+  74:main.c        ****  */
+  75:main.c        **** CY_ISR( IsrAppClk )
+  76:main.c        **** {
+ 114              		.loc 1 76 0
+ 115              		.cfi_startproc
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 1, uses_anonymous_args = 0
+ 118              		@ link register save eliminated.
+ 119 0000 80B4     		push	{r7}
+ 120              		.cfi_def_cfa_offset 4
+ 121              		.cfi_offset 7, -4
+ 122 0002 00AF     		add	r7, sp, #0
+ 123              		.cfi_def_cfa_register 7
+  77:main.c        ****     clk_count++;
+ 124              		.loc 1 77 0
+ 125 0004 0E4B     		ldr	r3, .L10
+ 126 0006 1B68     		ldr	r3, [r3]
+ 127 0008 0133     		adds	r3, r3, #1
+ 128 000a 0D4A     		ldr	r2, .L10
+ 129 000c 1360     		str	r3, [r2]
+  78:main.c        ****     if (clk_count % 1000 == 0)  // Reached 1000th hz call for 1/1000sec => 1 sec passed
+ 130              		.loc 1 78 0
+ 131 000e 0C4B     		ldr	r3, .L10
+ 132 0010 1A68     		ldr	r2, [r3]
+ 133 0012 0C4B     		ldr	r3, .L10+4
+ 134 0014 83FB0213 		smull	r1, r3, r3, r2
+ 135 0018 9911     		asrs	r1, r3, #6
+ 136 001a D317     		asrs	r3, r2, #31
+ 137 001c CB1A     		subs	r3, r1, r3
+ 138 001e 4FF47A71 		mov	r1, #1000
+ 139 0022 01FB03F3 		mul	r3, r1, r3
+ 140 0026 D31A     		subs	r3, r2, r3
+ 141 0028 002B     		cmp	r3, #0
+ 142 002a 03D1     		bne	.L8
+  79:main.c        ****     {
+  80:main.c        ****         clk_flag = 1;
+ 143              		.loc 1 80 0
+ 144 002c 064B     		ldr	r3, .L10+8
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 5
+
+
+ 145 002e 0122     		movs	r2, #1
+ 146 0030 1A70     		strb	r2, [r3]
+  81:main.c        ****         return;
+ 147              		.loc 1 81 0
+ 148 0032 02E0     		b	.L7
+ 149              	.L8:
+  82:main.c        ****     }
+  83:main.c        ****     clk_flag = 0;
+ 150              		.loc 1 83 0
+ 151 0034 044B     		ldr	r3, .L10+8
+ 152 0036 0022     		movs	r2, #0
+ 153 0038 1A70     		strb	r2, [r3]
+ 154              	.L7:
+  84:main.c        **** }
+ 155              		.loc 1 84 0
+ 156 003a BD46     		mov	sp, r7
+ 157              		.cfi_def_cfa_register 13
+ 158              		@ sp needed
+ 159 003c 80BC     		pop	{r7}
+ 160              		.cfi_restore 7
+ 161              		.cfi_def_cfa_offset 0
+ 162 003e 7047     		bx	lr
+ 163              	.L11:
+ 164              		.align	2
+ 165              	.L10:
+ 166 0040 00000000 		.word	clk_count
+ 167 0044 D34D6210 		.word	274877907
+ 168 0048 82000000 		.word	clk_flag
+ 169              		.cfi_endproc
+ 170              	.LFE66:
+ 171              		.size	IsrAppClk, .-IsrAppClk
+ 172              		.section	.text.toggleLED,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	toggleLED
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.type	toggleLED, %function
+ 178              	toggleLED:
+ 179              	.LFB67:
+  85:main.c        **** 
+  86:main.c        **** 
+  87:main.c        **** // Toggle LED
+  88:main.c        **** uint8_t toggleLED(uint8_t dword)
+  89:main.c        **** {
+ 180              		.loc 1 89 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 8
+ 183              		@ frame_needed = 1, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 185 0000 80B4     		push	{r7}
+ 186              		.cfi_def_cfa_offset 4
+ 187              		.cfi_offset 7, -4
+ 188 0002 83B0     		sub	sp, sp, #12
+ 189              		.cfi_def_cfa_offset 16
+ 190 0004 00AF     		add	r7, sp, #0
+ 191              		.cfi_def_cfa_register 7
+ 192 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 6
+
+
+ 193 0008 FB71     		strb	r3, [r7, #7]
+  90:main.c        ****     if(dword == LED_ON)
+ 194              		.loc 1 90 0
+ 195 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 196 000c 002B     		cmp	r3, #0
+ 197 000e 01D1     		bne	.L13
+  91:main.c        ****         return LED_OFF;
+ 198              		.loc 1 91 0
+ 199 0010 0123     		movs	r3, #1
+ 200 0012 00E0     		b	.L14
+ 201              	.L13:
+  92:main.c        ****     else
+  93:main.c        ****         return LED_ON;
+ 202              		.loc 1 93 0
+ 203 0014 0023     		movs	r3, #0
+ 204              	.L14:
+  94:main.c        **** }
+ 205              		.loc 1 94 0
+ 206 0016 1846     		mov	r0, r3
+ 207 0018 0C37     		adds	r7, r7, #12
+ 208              		.cfi_def_cfa_offset 4
+ 209 001a BD46     		mov	sp, r7
+ 210              		.cfi_def_cfa_register 13
+ 211              		@ sp needed
+ 212 001c 80BC     		pop	{r7}
+ 213              		.cfi_restore 7
+ 214              		.cfi_def_cfa_offset 0
+ 215 001e 7047     		bx	lr
+ 216              		.cfi_endproc
+ 217              	.LFE67:
+ 218              		.size	toggleLED, .-toggleLED
+ 219              		.section	.rodata
+ 220              		.align	2
+ 221              	.LC0:
+ 222 0000 4D505332 		.ascii	"MPS21_Prakt_3, FreeSoC2, PSoC 5LP, ver. 1.0\012\015"
+ 222      315F5072 
+ 222      616B745F 
+ 222      332C2046 
+ 222      72656553 
+ 223 002d 53656261 		.ascii	"Sebastian Zill (Template MPS 3), Nov 24 2021 18:48:"
+ 223      73746961 
+ 223      6E205A69 
+ 223      6C6C2028 
+ 223      54656D70 
+ 224 0060 303900   		.ascii	"09\000"
+ 225 0063 00       		.align	2
+ 226              	.LC1:
+ 227 0064 0A0D5765 		.ascii	"\012\015Welcome! %s\012\015\000"
+ 227      6C636F6D 
+ 227      65212025 
+ 227      730A0D00 
+ 228              		.align	2
+ 229              	.LC2:
+ 230 0074 4D656E75 		.ascii	"Menu-Beispiel: Taste 'm' gedrueckt\012\015\000"
+ 230      2D426569 
+ 230      73706965 
+ 230      6C3A2054 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 7
+
+
+ 230      61737465 
+ 231 0099 000000   		.align	2
+ 232              	.LC3:
+ 233 009c 54696D65 		.ascii	"Time passed: %d sec.\015\000"
+ 233      20706173 
+ 233      7365643A 
+ 233      20256420 
+ 233      7365632E 
+ 234              		.section	.text.main,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	main
+ 237              		.thumb
+ 238              		.thumb_func
+ 239              		.type	main, %function
+ 240              	main:
+ 241              	.LFB68:
+  95:main.c        **** 
+  96:main.c        **** 
+  97:main.c        **** /**
+  98:main.c        ****  * Basisprojekt mit UART mit Interrupt, User Button mit Interrupt und Statusabfrage. 
+  99:main.c        ****  * Pin-I/O Einfache Eingabe mit Button, Ausgabe mit LED
+ 100:main.c        ****  * für FreeSoC2
+ 101:main.c        ****  * 
+ 102:main.c        ****  * @author Ralf S. Mayer
+ 103:main.c        ****  * @date 2019-09-18
+ 104:main.c        ****  * @version 1.0
+ 105:main.c        ****  */
+ 106:main.c        **** int main(void)
+ 107:main.c        **** {
+ 242              		.loc 1 107 0
+ 243              		.cfi_startproc
+ 244              		@ args = 0, pretend = 0, frame = 8
+ 245              		@ frame_needed = 1, uses_anonymous_args = 0
+ 246 0000 80B5     		push	{r7, lr}
+ 247              		.cfi_def_cfa_offset 8
+ 248              		.cfi_offset 7, -8
+ 249              		.cfi_offset 14, -4
+ 250 0002 82B0     		sub	sp, sp, #8
+ 251              		.cfi_def_cfa_offset 16
+ 252 0004 00AF     		add	r7, sp, #0
+ 253              		.cfi_def_cfa_register 7
+ 108:main.c        ****     /* Initialize and start UART, register ISR */
+ 109:main.c        ****     UART_Start();                       // start UART
+ 254              		.loc 1 109 0
+ 255 0006 FFF7FEFF 		bl	UART_Start
+ 110:main.c        ****     isr_UART_RX_StartEx( MyIsrUartRX ); // register ISR, enable itr uart
+ 256              		.loc 1 110 0
+ 257 000a 2E48     		ldr	r0, .L24
+ 258 000c FFF7FEFF 		bl	isr_UART_RX_StartEx
+ 111:main.c        ****                                         // Bei empfangen eines Bytes wird der UART
+ 112:main.c        ****                                         // Interrupt ausgelöst
+ 113:main.c        **** 
+ 114:main.c        ****     /* Initialize and start MyIsrCWEW, register ISR */
+ 115:main.c        ****     isr_CWEW_StartEx( MyIsrCWEW );      // register CWEW itr
+ 259              		.loc 1 115 0
+ 260 0010 2D48     		ldr	r0, .L24+4
+ 261 0012 FFF7FEFF 		bl	isr_CWEW_StartEx
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 8
+
+
+ 116:main.c        ****     Pin_CWEW_ClearInterrupt();          // clear eventual interrupt
+ 262              		.loc 1 116 0
+ 263 0016 FFF7FEFF 		bl	Pin_CWEW_ClearInterrupt
+ 117:main.c        ****     isr_CWEW_ClearPending();            // clear eventual pending interrupt
+ 264              		.loc 1 117 0
+ 265 001a FFF7FEFF 		bl	isr_CWEW_ClearPending
+ 118:main.c        ****     
+ 119:main.c        ****     isr_Clk_StartEx( IsrAppClk );       // register application clock
+ 266              		.loc 1 119 0
+ 267 001e 2B48     		ldr	r0, .L24+8
+ 268 0020 FFF7FEFF 		bl	isr_Clk_StartEx
+ 120:main.c        ****     
+ 121:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 269              		.loc 1 121 0
+ 270              		.syntax unified
+ 271              	@ 121 "main.c" 1
+ 272 0024 62B6     		CPSIE   i
+ 273              	@ 0 "" 2
+ 122:main.c        **** 
+ 123:main.c        ****     /* Welcome and info text Ausgabe */
+ 124:main.c        ****     sprintf( buffer, "\n\rWelcome! %s\n\r", _VERSTR_);  // formatiert in Buffer
+ 274              		.loc 1 124 0
+ 275              		.thumb
+ 276              		.syntax unified
+ 277 0026 2A4A     		ldr	r2, .L24+12
+ 278 0028 2A49     		ldr	r1, .L24+16
+ 279 002a 2B48     		ldr	r0, .L24+20
+ 280 002c FFF7FEFF 		bl	sprintf
+ 125:main.c        ****     UART_PutString( buffer );                           // Ausgabe auf UART
+ 281              		.loc 1 125 0
+ 282 0030 2948     		ldr	r0, .L24+20
+ 283 0032 FFF7FEFF 		bl	UART_PutString
+ 284              	.L22:
+ 126:main.c        **** 
+ 127:main.c        ****     // Applikationsschleife
+ 128:main.c        ****     for(;;)
+ 129:main.c        ****     {
+ 130:main.c        ****         /* 
+ 131:main.c        ****          * Character aus Uart ISR abfragen 
+ 132:main.c        ****          * Beipsiel für einfache Menuesteuerung
+ 133:main.c        ****          * Achtung: Für UART in diesem Programm ist ein zusätzlicher FTDI USB-TTL-Adapter notwend
+ 134:main.c        ****          */
+ 135:main.c        ****         if ( cRx )
+ 285              		.loc 1 135 0
+ 286 0036 294B     		ldr	r3, .L24+24
+ 287 0038 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 288 003a 002B     		cmp	r3, #0
+ 289 003c 18D0     		beq	.L16
+ 290              	.LBB2:
+ 136:main.c        ****         {
+ 137:main.c        ****             char c = cRx;   // copy char
+ 291              		.loc 1 137 0
+ 292 003e 274B     		ldr	r3, .L24+24
+ 293 0040 1B78     		ldrb	r3, [r3]
+ 294 0042 FB71     		strb	r3, [r7, #7]
+ 138:main.c        ****             cRx = 0;        // nicht vergessen!!! Warum? Weil der cRx nur duch system Interrupt res
+ 295              		.loc 1 138 0
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 9
+
+
+ 296 0044 254B     		ldr	r3, .L24+24
+ 297 0046 0022     		movs	r2, #0
+ 298 0048 1A70     		strb	r2, [r3]
+ 139:main.c        ****             // +++ Menuesteuerung +++
+ 140:main.c        ****             switch ( c ) 
+ 299              		.loc 1 140 0
+ 300 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 301 004c 6D2B     		cmp	r3, #109
+ 302 004e 06D0     		beq	.L18
+ 303 0050 712B     		cmp	r3, #113
+ 304 0052 01D0     		beq	.L19
+ 305 0054 512B     		cmp	r3, #81
+ 306 0056 06D1     		bne	.L23
+ 307              	.L19:
+ 141:main.c        ****             {
+ 142:main.c        ****                 // Software reset, startet Programm neu
+ 143:main.c        ****                 case 'q':
+ 144:main.c        ****                 case 'Q':   // fallthrough
+ 145:main.c        ****                     CySoftwareReset();
+ 308              		.loc 1 145 0
+ 309 0058 FFF7FEFF 		bl	CySoftwareReset
+ 146:main.c        ****                     break;
+ 310              		.loc 1 146 0
+ 311 005c 08E0     		b	.L16
+ 312              	.L18:
+ 147:main.c        ****                 case 'm':   // so könnte man etwas steuern über die Konsole
+ 148:main.c        ****                     UART_PutString( "Menu-Beispiel: Taste 'm' gedrueckt\n\r" );
+ 313              		.loc 1 148 0
+ 314 005e 2048     		ldr	r0, .L24+28
+ 315 0060 FFF7FEFF 		bl	UART_PutString
+ 149:main.c        ****                     break;
+ 316              		.loc 1 149 0
+ 317 0064 04E0     		b	.L16
+ 318              	.L23:
+ 150:main.c        ****                 default:
+ 151:main.c        ****                     UART_PutChar( c );    // Buchstabe auf Bildschirm ausgeben
+ 319              		.loc 1 151 0
+ 320 0066 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 321 0068 1846     		mov	r0, r3
+ 322 006a FFF7FEFF 		bl	UART_PutChar
+ 152:main.c        ****                     break;
+ 323              		.loc 1 152 0
+ 324 006e 00BF     		nop
+ 325              	.L16:
+ 326              	.LBE2:
+ 153:main.c        ****             }  // end switch          
+ 154:main.c        ****         } // end if cRx
+ 155:main.c        ****         
+ 156:main.c        ****         
+ 157:main.c        ****         // Behandlung Button-Ereignis aus ISR und LED toggle
+ 158:main.c        ****         if ( fCWEW_Isr ) {
+ 327              		.loc 1 158 0
+ 328 0070 1C4B     		ldr	r3, .L24+32
+ 329 0072 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 330 0074 002B     		cmp	r3, #0
+ 331 0076 0FD0     		beq	.L20
+ 159:main.c        ****             Pin_E_CW_Write( toggleLED( Pin_E_CW_Read() ) );
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 10
+
+
+ 332              		.loc 1 159 0
+ 333 0078 FFF7FEFF 		bl	Pin_E_CW_Read
+ 334 007c 0346     		mov	r3, r0
+ 335 007e 1846     		mov	r0, r3
+ 336 0080 FFF7FEFF 		bl	toggleLED
+ 337 0084 0346     		mov	r3, r0
+ 338 0086 1846     		mov	r0, r3
+ 339 0088 FFF7FEFF 		bl	Pin_E_CW_Write
+ 160:main.c        ****             UART_PutChar(7);// Spiele Ton ab mit Steuerzeichen BEL (7)
+ 340              		.loc 1 160 0
+ 341 008c 0720     		movs	r0, #7
+ 342 008e FFF7FEFF 		bl	UART_PutChar
+ 161:main.c        ****             fCWEW_Isr = 0;
+ 343              		.loc 1 161 0
+ 344 0092 144B     		ldr	r3, .L24+32
+ 345 0094 0022     		movs	r2, #0
+ 346 0096 1A70     		strb	r2, [r3]
+ 347              	.L20:
+ 162:main.c        ****         }
+ 163:main.c        ****         
+ 164:main.c        ****         // Behandlung CLK-Ereignis jede Sekunde
+ 165:main.c        ****         if ( clk_flag ) {
+ 348              		.loc 1 165 0
+ 349 0098 134B     		ldr	r3, .L24+36
+ 350 009a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 351 009c 002B     		cmp	r3, #0
+ 352 009e CAD0     		beq	.L22
+ 166:main.c        ****             sprintf( buffer, "Time passed: %d sec.\r", clk_count / 1000);
+ 353              		.loc 1 166 0
+ 354 00a0 124B     		ldr	r3, .L24+40
+ 355 00a2 1B68     		ldr	r3, [r3]
+ 356 00a4 124A     		ldr	r2, .L24+44
+ 357 00a6 82FB0312 		smull	r1, r2, r2, r3
+ 358 00aa 9211     		asrs	r2, r2, #6
+ 359 00ac DB17     		asrs	r3, r3, #31
+ 360 00ae D31A     		subs	r3, r2, r3
+ 361 00b0 1A46     		mov	r2, r3
+ 362 00b2 1049     		ldr	r1, .L24+48
+ 363 00b4 0848     		ldr	r0, .L24+20
+ 364 00b6 FFF7FEFF 		bl	sprintf
+ 167:main.c        ****             UART_PutString( buffer );
+ 365              		.loc 1 167 0
+ 366 00ba 0748     		ldr	r0, .L24+20
+ 367 00bc FFF7FEFF 		bl	UART_PutString
+ 168:main.c        ****         }
+ 169:main.c        ****                 
+ 170:main.c        ****     } // end for
+ 368              		.loc 1 170 0
+ 369 00c0 B9E7     		b	.L22
+ 370              	.L25:
+ 371 00c2 00BF     		.align	2
+ 372              	.L24:
+ 373 00c4 00000000 		.word	MyIsrUartRX
+ 374 00c8 00000000 		.word	MyIsrCWEW
+ 375 00cc 00000000 		.word	IsrAppClk
+ 376 00d0 00000000 		.word	.LC0
+ 377 00d4 64000000 		.word	.LC1
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 11
+
+
+ 378 00d8 00000000 		.word	buffer
+ 379 00dc 80000000 		.word	cRx
+ 380 00e0 74000000 		.word	.LC2
+ 381 00e4 81000000 		.word	fCWEW_Isr
+ 382 00e8 82000000 		.word	clk_flag
+ 383 00ec 00000000 		.word	clk_count
+ 384 00f0 D34D6210 		.word	274877907
+ 385 00f4 9C000000 		.word	.LC3
+ 386              		.cfi_endproc
+ 387              	.LFE68:
+ 388              		.size	main, .-main
+ 389              		.text
+ 390              	.Letext0:
+ 391              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 392              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 393              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 394              		.section	.debug_info,"",%progbits
+ 395              	.Ldebug_info0:
+ 396 0000 B8010000 		.4byte	0x1b8
+ 397 0004 0400     		.2byte	0x4
+ 398 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 399 000a 04       		.byte	0x4
+ 400 000b 01       		.uleb128 0x1
+ 401 000c 0A000000 		.4byte	.LASF27
+ 402 0010 0C       		.byte	0xc
+ 403 0011 EA010000 		.4byte	.LASF28
+ 404 0015 3E010000 		.4byte	.LASF29
+ 405 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 406 001d 00000000 		.4byte	0
+ 407 0021 00000000 		.4byte	.Ldebug_line0
+ 408 0025 02       		.uleb128 0x2
+ 409 0026 01       		.byte	0x1
+ 410 0027 06       		.byte	0x6
+ 411 0028 26020000 		.4byte	.LASF0
+ 412 002c 03       		.uleb128 0x3
+ 413 002d 00000000 		.4byte	.LASF4
+ 414 0031 02       		.byte	0x2
+ 415 0032 1D       		.byte	0x1d
+ 416 0033 37000000 		.4byte	0x37
+ 417 0037 02       		.uleb128 0x2
+ 418 0038 01       		.byte	0x1
+ 419 0039 08       		.byte	0x8
+ 420 003a BE000000 		.4byte	.LASF1
+ 421 003e 02       		.uleb128 0x2
+ 422 003f 02       		.byte	0x2
+ 423 0040 05       		.byte	0x5
+ 424 0041 F6010000 		.4byte	.LASF2
+ 425 0045 02       		.uleb128 0x2
+ 426 0046 02       		.byte	0x2
+ 427 0047 07       		.byte	0x7
+ 428 0048 E7000000 		.4byte	.LASF3
+ 429 004c 03       		.uleb128 0x3
+ 430 004d 98000000 		.4byte	.LASF5
+ 431 0051 02       		.byte	0x2
+ 432 0052 3F       		.byte	0x3f
+ 433 0053 57000000 		.4byte	0x57
+ 434 0057 02       		.uleb128 0x2
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 12
+
+
+ 435 0058 04       		.byte	0x4
+ 436 0059 05       		.byte	0x5
+ 437 005a 11020000 		.4byte	.LASF6
+ 438 005e 02       		.uleb128 0x2
+ 439 005f 04       		.byte	0x4
+ 440 0060 07       		.byte	0x7
+ 441 0061 D5000000 		.4byte	.LASF7
+ 442 0065 02       		.uleb128 0x2
+ 443 0066 08       		.byte	0x8
+ 444 0067 05       		.byte	0x5
+ 445 0068 DC010000 		.4byte	.LASF8
+ 446 006c 02       		.uleb128 0x2
+ 447 006d 08       		.byte	0x8
+ 448 006e 07       		.byte	0x7
+ 449 006f AC010000 		.4byte	.LASF9
+ 450 0073 04       		.uleb128 0x4
+ 451 0074 04       		.byte	0x4
+ 452 0075 05       		.byte	0x5
+ 453 0076 696E7400 		.ascii	"int\000"
+ 454 007a 02       		.uleb128 0x2
+ 455 007b 04       		.byte	0x4
+ 456 007c 07       		.byte	0x7
+ 457 007d 31010000 		.4byte	.LASF10
+ 458 0081 03       		.uleb128 0x3
+ 459 0082 C3010000 		.4byte	.LASF11
+ 460 0086 03       		.byte	0x3
+ 461 0087 18       		.byte	0x18
+ 462 0088 2C000000 		.4byte	0x2c
+ 463 008c 03       		.uleb128 0x3
+ 464 008d CB010000 		.4byte	.LASF12
+ 465 0091 03       		.byte	0x3
+ 466 0092 2C       		.byte	0x2c
+ 467 0093 4C000000 		.4byte	0x4c
+ 468 0097 02       		.uleb128 0x2
+ 469 0098 04       		.byte	0x4
+ 470 0099 04       		.byte	0x4
+ 471 009a AC000000 		.4byte	.LASF13
+ 472 009e 02       		.uleb128 0x2
+ 473 009f 08       		.byte	0x8
+ 474 00a0 04       		.byte	0x4
+ 475 00a1 11010000 		.4byte	.LASF14
+ 476 00a5 02       		.uleb128 0x2
+ 477 00a6 01       		.byte	0x1
+ 478 00a7 08       		.byte	0x8
+ 479 00a8 F1010000 		.4byte	.LASF15
+ 480 00ac 02       		.uleb128 0x2
+ 481 00ad 08       		.byte	0x8
+ 482 00ae 04       		.byte	0x4
+ 483 00af 1A020000 		.4byte	.LASF16
+ 484 00b3 02       		.uleb128 0x2
+ 485 00b4 04       		.byte	0x4
+ 486 00b5 07       		.byte	0x7
+ 487 00b6 D3010000 		.4byte	.LASF17
+ 488 00ba 05       		.uleb128 0x5
+ 489 00bb B2000000 		.4byte	.LASF18
+ 490 00bf 01       		.byte	0x1
+ 491 00c0 33       		.byte	0x33
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 13
+
+
+ 492 00c1 00000000 		.4byte	.LFB64
+ 493 00c5 18000000 		.4byte	.LFE64-.LFB64
+ 494 00c9 01       		.uleb128 0x1
+ 495 00ca 9C       		.byte	0x9c
+ 496 00cb 05       		.uleb128 0x5
+ 497 00cc 07020000 		.4byte	.LASF19
+ 498 00d0 01       		.byte	0x1
+ 499 00d1 3E       		.byte	0x3e
+ 500 00d2 00000000 		.4byte	.LFB65
+ 501 00d6 18000000 		.4byte	.LFE65-.LFB65
+ 502 00da 01       		.uleb128 0x1
+ 503 00db 9C       		.byte	0x9c
+ 504 00dc 06       		.uleb128 0x6
+ 505 00dd A2000000 		.4byte	.LASF20
+ 506 00e1 01       		.byte	0x1
+ 507 00e2 4B       		.byte	0x4b
+ 508 00e3 00000000 		.4byte	.LFB66
+ 509 00e7 4C000000 		.4byte	.LFE66-.LFB66
+ 510 00eb 01       		.uleb128 0x1
+ 511 00ec 9C       		.byte	0x9c
+ 512 00ed 07       		.uleb128 0x7
+ 513 00ee 22010000 		.4byte	.LASF21
+ 514 00f2 01       		.byte	0x1
+ 515 00f3 58       		.byte	0x58
+ 516 00f4 81000000 		.4byte	0x81
+ 517 00f8 00000000 		.4byte	.LFB67
+ 518 00fc 20000000 		.4byte	.LFE67-.LFB67
+ 519 0100 01       		.uleb128 0x1
+ 520 0101 9C       		.byte	0x9c
+ 521 0102 15010000 		.4byte	0x115
+ 522 0106 08       		.uleb128 0x8
+ 523 0107 32020000 		.4byte	.LASF30
+ 524 010b 01       		.byte	0x1
+ 525 010c 58       		.byte	0x58
+ 526 010d 81000000 		.4byte	0x81
+ 527 0111 02       		.uleb128 0x2
+ 528 0112 91       		.byte	0x91
+ 529 0113 77       		.sleb128 -9
+ 530 0114 00       		.byte	0
+ 531 0115 09       		.uleb128 0x9
+ 532 0116 2C010000 		.4byte	.LASF22
+ 533 011a 01       		.byte	0x1
+ 534 011b 6A       		.byte	0x6a
+ 535 011c 73000000 		.4byte	0x73
+ 536 0120 00000000 		.4byte	.LFB68
+ 537 0124 F8000000 		.4byte	.LFE68-.LFB68
+ 538 0128 01       		.uleb128 0x1
+ 539 0129 9C       		.byte	0x9c
+ 540 012a 45010000 		.4byte	0x145
+ 541 012e 0A       		.uleb128 0xa
+ 542 012f 3E000000 		.4byte	.LBB2
+ 543 0133 32000000 		.4byte	.LBE2-.LBB2
+ 544 0137 0B       		.uleb128 0xb
+ 545 0138 6300     		.ascii	"c\000"
+ 546 013a 01       		.byte	0x1
+ 547 013b 89       		.byte	0x89
+ 548 013c A5000000 		.4byte	0xa5
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 14
+
+
+ 549 0140 02       		.uleb128 0x2
+ 550 0141 91       		.byte	0x91
+ 551 0142 77       		.sleb128 -9
+ 552 0143 00       		.byte	0
+ 553 0144 00       		.byte	0
+ 554 0145 0C       		.uleb128 0xc
+ 555 0146 A5000000 		.4byte	0xa5
+ 556 014a 55010000 		.4byte	0x155
+ 557 014e 0D       		.uleb128 0xd
+ 558 014f B3000000 		.4byte	0xb3
+ 559 0153 7F       		.byte	0x7f
+ 560 0154 00       		.byte	0
+ 561 0155 0E       		.uleb128 0xe
+ 562 0156 00020000 		.4byte	.LASF23
+ 563 015a 01       		.byte	0x1
+ 564 015b 2A       		.byte	0x2a
+ 565 015c 45010000 		.4byte	0x145
+ 566 0160 05       		.uleb128 0x5
+ 567 0161 03       		.byte	0x3
+ 568 0162 00000000 		.4byte	buffer
+ 569 0166 0B       		.uleb128 0xb
+ 570 0167 63527800 		.ascii	"cRx\000"
+ 571 016b 01       		.byte	0x1
+ 572 016c 2C       		.byte	0x2c
+ 573 016d A5000000 		.4byte	0xa5
+ 574 0171 05       		.uleb128 0x5
+ 575 0172 03       		.byte	0x3
+ 576 0173 80000000 		.4byte	cRx
+ 577 0177 0E       		.uleb128 0xe
+ 578 0178 18010000 		.4byte	.LASF24
+ 579 017c 01       		.byte	0x1
+ 580 017d 38       		.byte	0x38
+ 581 017e 81000000 		.4byte	0x81
+ 582 0182 05       		.uleb128 0x5
+ 583 0183 03       		.byte	0x3
+ 584 0184 81000000 		.4byte	fCWEW_Isr
+ 585 0188 0E       		.uleb128 0xe
+ 586 0189 FA000000 		.4byte	.LASF25
+ 587 018d 01       		.byte	0x1
+ 588 018e 44       		.byte	0x44
+ 589 018f 73000000 		.4byte	0x73
+ 590 0193 05       		.uleb128 0x5
+ 591 0194 03       		.byte	0x3
+ 592 0195 00000000 		.4byte	clk_count
+ 593 0199 0E       		.uleb128 0xe
+ 594 019a CC000000 		.4byte	.LASF26
+ 595 019e 01       		.byte	0x1
+ 596 019f 45       		.byte	0x45
+ 597 01a0 81000000 		.4byte	0x81
+ 598 01a4 05       		.uleb128 0x5
+ 599 01a5 03       		.byte	0x3
+ 600 01a6 82000000 		.4byte	clk_flag
+ 601 01aa 0F       		.uleb128 0xf
+ 602 01ab 04010000 		.4byte	.LASF31
+ 603 01af 04       		.byte	0x4
+ 604 01b0 1207     		.2byte	0x712
+ 605 01b2 B6010000 		.4byte	0x1b6
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 15
+
+
+ 606 01b6 10       		.uleb128 0x10
+ 607 01b7 8C000000 		.4byte	0x8c
+ 608 01bb 00       		.byte	0
+ 609              		.section	.debug_abbrev,"",%progbits
+ 610              	.Ldebug_abbrev0:
+ 611 0000 01       		.uleb128 0x1
+ 612 0001 11       		.uleb128 0x11
+ 613 0002 01       		.byte	0x1
+ 614 0003 25       		.uleb128 0x25
+ 615 0004 0E       		.uleb128 0xe
+ 616 0005 13       		.uleb128 0x13
+ 617 0006 0B       		.uleb128 0xb
+ 618 0007 03       		.uleb128 0x3
+ 619 0008 0E       		.uleb128 0xe
+ 620 0009 1B       		.uleb128 0x1b
+ 621 000a 0E       		.uleb128 0xe
+ 622 000b 55       		.uleb128 0x55
+ 623 000c 17       		.uleb128 0x17
+ 624 000d 11       		.uleb128 0x11
+ 625 000e 01       		.uleb128 0x1
+ 626 000f 10       		.uleb128 0x10
+ 627 0010 17       		.uleb128 0x17
+ 628 0011 00       		.byte	0
+ 629 0012 00       		.byte	0
+ 630 0013 02       		.uleb128 0x2
+ 631 0014 24       		.uleb128 0x24
+ 632 0015 00       		.byte	0
+ 633 0016 0B       		.uleb128 0xb
+ 634 0017 0B       		.uleb128 0xb
+ 635 0018 3E       		.uleb128 0x3e
+ 636 0019 0B       		.uleb128 0xb
+ 637 001a 03       		.uleb128 0x3
+ 638 001b 0E       		.uleb128 0xe
+ 639 001c 00       		.byte	0
+ 640 001d 00       		.byte	0
+ 641 001e 03       		.uleb128 0x3
+ 642 001f 16       		.uleb128 0x16
+ 643 0020 00       		.byte	0
+ 644 0021 03       		.uleb128 0x3
+ 645 0022 0E       		.uleb128 0xe
+ 646 0023 3A       		.uleb128 0x3a
+ 647 0024 0B       		.uleb128 0xb
+ 648 0025 3B       		.uleb128 0x3b
+ 649 0026 0B       		.uleb128 0xb
+ 650 0027 49       		.uleb128 0x49
+ 651 0028 13       		.uleb128 0x13
+ 652 0029 00       		.byte	0
+ 653 002a 00       		.byte	0
+ 654 002b 04       		.uleb128 0x4
+ 655 002c 24       		.uleb128 0x24
+ 656 002d 00       		.byte	0
+ 657 002e 0B       		.uleb128 0xb
+ 658 002f 0B       		.uleb128 0xb
+ 659 0030 3E       		.uleb128 0x3e
+ 660 0031 0B       		.uleb128 0xb
+ 661 0032 03       		.uleb128 0x3
+ 662 0033 08       		.uleb128 0x8
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 16
+
+
+ 663 0034 00       		.byte	0
+ 664 0035 00       		.byte	0
+ 665 0036 05       		.uleb128 0x5
+ 666 0037 2E       		.uleb128 0x2e
+ 667 0038 00       		.byte	0
+ 668 0039 3F       		.uleb128 0x3f
+ 669 003a 19       		.uleb128 0x19
+ 670 003b 03       		.uleb128 0x3
+ 671 003c 0E       		.uleb128 0xe
+ 672 003d 3A       		.uleb128 0x3a
+ 673 003e 0B       		.uleb128 0xb
+ 674 003f 3B       		.uleb128 0x3b
+ 675 0040 0B       		.uleb128 0xb
+ 676 0041 27       		.uleb128 0x27
+ 677 0042 19       		.uleb128 0x19
+ 678 0043 11       		.uleb128 0x11
+ 679 0044 01       		.uleb128 0x1
+ 680 0045 12       		.uleb128 0x12
+ 681 0046 06       		.uleb128 0x6
+ 682 0047 40       		.uleb128 0x40
+ 683 0048 18       		.uleb128 0x18
+ 684 0049 9642     		.uleb128 0x2116
+ 685 004b 19       		.uleb128 0x19
+ 686 004c 00       		.byte	0
+ 687 004d 00       		.byte	0
+ 688 004e 06       		.uleb128 0x6
+ 689 004f 2E       		.uleb128 0x2e
+ 690 0050 00       		.byte	0
+ 691 0051 3F       		.uleb128 0x3f
+ 692 0052 19       		.uleb128 0x19
+ 693 0053 03       		.uleb128 0x3
+ 694 0054 0E       		.uleb128 0xe
+ 695 0055 3A       		.uleb128 0x3a
+ 696 0056 0B       		.uleb128 0xb
+ 697 0057 3B       		.uleb128 0x3b
+ 698 0058 0B       		.uleb128 0xb
+ 699 0059 27       		.uleb128 0x27
+ 700 005a 19       		.uleb128 0x19
+ 701 005b 11       		.uleb128 0x11
+ 702 005c 01       		.uleb128 0x1
+ 703 005d 12       		.uleb128 0x12
+ 704 005e 06       		.uleb128 0x6
+ 705 005f 40       		.uleb128 0x40
+ 706 0060 18       		.uleb128 0x18
+ 707 0061 9742     		.uleb128 0x2117
+ 708 0063 19       		.uleb128 0x19
+ 709 0064 00       		.byte	0
+ 710 0065 00       		.byte	0
+ 711 0066 07       		.uleb128 0x7
+ 712 0067 2E       		.uleb128 0x2e
+ 713 0068 01       		.byte	0x1
+ 714 0069 3F       		.uleb128 0x3f
+ 715 006a 19       		.uleb128 0x19
+ 716 006b 03       		.uleb128 0x3
+ 717 006c 0E       		.uleb128 0xe
+ 718 006d 3A       		.uleb128 0x3a
+ 719 006e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 17
+
+
+ 720 006f 3B       		.uleb128 0x3b
+ 721 0070 0B       		.uleb128 0xb
+ 722 0071 27       		.uleb128 0x27
+ 723 0072 19       		.uleb128 0x19
+ 724 0073 49       		.uleb128 0x49
+ 725 0074 13       		.uleb128 0x13
+ 726 0075 11       		.uleb128 0x11
+ 727 0076 01       		.uleb128 0x1
+ 728 0077 12       		.uleb128 0x12
+ 729 0078 06       		.uleb128 0x6
+ 730 0079 40       		.uleb128 0x40
+ 731 007a 18       		.uleb128 0x18
+ 732 007b 9742     		.uleb128 0x2117
+ 733 007d 19       		.uleb128 0x19
+ 734 007e 01       		.uleb128 0x1
+ 735 007f 13       		.uleb128 0x13
+ 736 0080 00       		.byte	0
+ 737 0081 00       		.byte	0
+ 738 0082 08       		.uleb128 0x8
+ 739 0083 05       		.uleb128 0x5
+ 740 0084 00       		.byte	0
+ 741 0085 03       		.uleb128 0x3
+ 742 0086 0E       		.uleb128 0xe
+ 743 0087 3A       		.uleb128 0x3a
+ 744 0088 0B       		.uleb128 0xb
+ 745 0089 3B       		.uleb128 0x3b
+ 746 008a 0B       		.uleb128 0xb
+ 747 008b 49       		.uleb128 0x49
+ 748 008c 13       		.uleb128 0x13
+ 749 008d 02       		.uleb128 0x2
+ 750 008e 18       		.uleb128 0x18
+ 751 008f 00       		.byte	0
+ 752 0090 00       		.byte	0
+ 753 0091 09       		.uleb128 0x9
+ 754 0092 2E       		.uleb128 0x2e
+ 755 0093 01       		.byte	0x1
+ 756 0094 3F       		.uleb128 0x3f
+ 757 0095 19       		.uleb128 0x19
+ 758 0096 03       		.uleb128 0x3
+ 759 0097 0E       		.uleb128 0xe
+ 760 0098 3A       		.uleb128 0x3a
+ 761 0099 0B       		.uleb128 0xb
+ 762 009a 3B       		.uleb128 0x3b
+ 763 009b 0B       		.uleb128 0xb
+ 764 009c 27       		.uleb128 0x27
+ 765 009d 19       		.uleb128 0x19
+ 766 009e 49       		.uleb128 0x49
+ 767 009f 13       		.uleb128 0x13
+ 768 00a0 11       		.uleb128 0x11
+ 769 00a1 01       		.uleb128 0x1
+ 770 00a2 12       		.uleb128 0x12
+ 771 00a3 06       		.uleb128 0x6
+ 772 00a4 40       		.uleb128 0x40
+ 773 00a5 18       		.uleb128 0x18
+ 774 00a6 9642     		.uleb128 0x2116
+ 775 00a8 19       		.uleb128 0x19
+ 776 00a9 01       		.uleb128 0x1
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 18
+
+
+ 777 00aa 13       		.uleb128 0x13
+ 778 00ab 00       		.byte	0
+ 779 00ac 00       		.byte	0
+ 780 00ad 0A       		.uleb128 0xa
+ 781 00ae 0B       		.uleb128 0xb
+ 782 00af 01       		.byte	0x1
+ 783 00b0 11       		.uleb128 0x11
+ 784 00b1 01       		.uleb128 0x1
+ 785 00b2 12       		.uleb128 0x12
+ 786 00b3 06       		.uleb128 0x6
+ 787 00b4 00       		.byte	0
+ 788 00b5 00       		.byte	0
+ 789 00b6 0B       		.uleb128 0xb
+ 790 00b7 34       		.uleb128 0x34
+ 791 00b8 00       		.byte	0
+ 792 00b9 03       		.uleb128 0x3
+ 793 00ba 08       		.uleb128 0x8
+ 794 00bb 3A       		.uleb128 0x3a
+ 795 00bc 0B       		.uleb128 0xb
+ 796 00bd 3B       		.uleb128 0x3b
+ 797 00be 0B       		.uleb128 0xb
+ 798 00bf 49       		.uleb128 0x49
+ 799 00c0 13       		.uleb128 0x13
+ 800 00c1 02       		.uleb128 0x2
+ 801 00c2 18       		.uleb128 0x18
+ 802 00c3 00       		.byte	0
+ 803 00c4 00       		.byte	0
+ 804 00c5 0C       		.uleb128 0xc
+ 805 00c6 01       		.uleb128 0x1
+ 806 00c7 01       		.byte	0x1
+ 807 00c8 49       		.uleb128 0x49
+ 808 00c9 13       		.uleb128 0x13
+ 809 00ca 01       		.uleb128 0x1
+ 810 00cb 13       		.uleb128 0x13
+ 811 00cc 00       		.byte	0
+ 812 00cd 00       		.byte	0
+ 813 00ce 0D       		.uleb128 0xd
+ 814 00cf 21       		.uleb128 0x21
+ 815 00d0 00       		.byte	0
+ 816 00d1 49       		.uleb128 0x49
+ 817 00d2 13       		.uleb128 0x13
+ 818 00d3 2F       		.uleb128 0x2f
+ 819 00d4 0B       		.uleb128 0xb
+ 820 00d5 00       		.byte	0
+ 821 00d6 00       		.byte	0
+ 822 00d7 0E       		.uleb128 0xe
+ 823 00d8 34       		.uleb128 0x34
+ 824 00d9 00       		.byte	0
+ 825 00da 03       		.uleb128 0x3
+ 826 00db 0E       		.uleb128 0xe
+ 827 00dc 3A       		.uleb128 0x3a
+ 828 00dd 0B       		.uleb128 0xb
+ 829 00de 3B       		.uleb128 0x3b
+ 830 00df 0B       		.uleb128 0xb
+ 831 00e0 49       		.uleb128 0x49
+ 832 00e1 13       		.uleb128 0x13
+ 833 00e2 02       		.uleb128 0x2
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 19
+
+
+ 834 00e3 18       		.uleb128 0x18
+ 835 00e4 00       		.byte	0
+ 836 00e5 00       		.byte	0
+ 837 00e6 0F       		.uleb128 0xf
+ 838 00e7 34       		.uleb128 0x34
+ 839 00e8 00       		.byte	0
+ 840 00e9 03       		.uleb128 0x3
+ 841 00ea 0E       		.uleb128 0xe
+ 842 00eb 3A       		.uleb128 0x3a
+ 843 00ec 0B       		.uleb128 0xb
+ 844 00ed 3B       		.uleb128 0x3b
+ 845 00ee 05       		.uleb128 0x5
+ 846 00ef 49       		.uleb128 0x49
+ 847 00f0 13       		.uleb128 0x13
+ 848 00f1 3F       		.uleb128 0x3f
+ 849 00f2 19       		.uleb128 0x19
+ 850 00f3 3C       		.uleb128 0x3c
+ 851 00f4 19       		.uleb128 0x19
+ 852 00f5 00       		.byte	0
+ 853 00f6 00       		.byte	0
+ 854 00f7 10       		.uleb128 0x10
+ 855 00f8 35       		.uleb128 0x35
+ 856 00f9 00       		.byte	0
+ 857 00fa 49       		.uleb128 0x49
+ 858 00fb 13       		.uleb128 0x13
+ 859 00fc 00       		.byte	0
+ 860 00fd 00       		.byte	0
+ 861 00fe 00       		.byte	0
+ 862              		.section	.debug_aranges,"",%progbits
+ 863 0000 3C000000 		.4byte	0x3c
+ 864 0004 0200     		.2byte	0x2
+ 865 0006 00000000 		.4byte	.Ldebug_info0
+ 866 000a 04       		.byte	0x4
+ 867 000b 00       		.byte	0
+ 868 000c 0000     		.2byte	0
+ 869 000e 0000     		.2byte	0
+ 870 0010 00000000 		.4byte	.LFB64
+ 871 0014 18000000 		.4byte	.LFE64-.LFB64
+ 872 0018 00000000 		.4byte	.LFB65
+ 873 001c 18000000 		.4byte	.LFE65-.LFB65
+ 874 0020 00000000 		.4byte	.LFB66
+ 875 0024 4C000000 		.4byte	.LFE66-.LFB66
+ 876 0028 00000000 		.4byte	.LFB67
+ 877 002c 20000000 		.4byte	.LFE67-.LFB67
+ 878 0030 00000000 		.4byte	.LFB68
+ 879 0034 F8000000 		.4byte	.LFE68-.LFB68
+ 880 0038 00000000 		.4byte	0
+ 881 003c 00000000 		.4byte	0
+ 882              		.section	.debug_ranges,"",%progbits
+ 883              	.Ldebug_ranges0:
+ 884 0000 00000000 		.4byte	.LFB64
+ 885 0004 18000000 		.4byte	.LFE64
+ 886 0008 00000000 		.4byte	.LFB65
+ 887 000c 18000000 		.4byte	.LFE65
+ 888 0010 00000000 		.4byte	.LFB66
+ 889 0014 4C000000 		.4byte	.LFE66
+ 890 0018 00000000 		.4byte	.LFB67
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 20
+
+
+ 891 001c 20000000 		.4byte	.LFE67
+ 892 0020 00000000 		.4byte	.LFB68
+ 893 0024 F8000000 		.4byte	.LFE68
+ 894 0028 00000000 		.4byte	0
+ 895 002c 00000000 		.4byte	0
+ 896              		.section	.debug_line,"",%progbits
+ 897              	.Ldebug_line0:
+ 898 0000 BF010000 		.section	.debug_str,"MS",%progbits,1
+ 898      02003F01 
+ 898      00000201 
+ 898      FB0E0D00 
+ 898      01010101 
+ 899              	.LASF4:
+ 900 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 900      6E74385F 
+ 900      7400
+ 901              	.LASF27:
+ 902 000a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 902      43313120 
+ 902      352E342E 
+ 902      31203230 
+ 902      31363036 
+ 903 003d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 903      20726576 
+ 903      6973696F 
+ 903      6E203233 
+ 903      37373135 
+ 904 0070 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 904      66756E63 
+ 904      74696F6E 
+ 904      2D736563 
+ 904      74696F6E 
+ 905              	.LASF5:
+ 906 0098 5F5F696E 		.ascii	"__int32_t\000"
+ 906      7433325F 
+ 906      7400
+ 907              	.LASF20:
+ 908 00a2 49737241 		.ascii	"IsrAppClk\000"
+ 908      7070436C 
+ 908      6B00
+ 909              	.LASF13:
+ 910 00ac 666C6F61 		.ascii	"float\000"
+ 910      7400
+ 911              	.LASF18:
+ 912 00b2 4D794973 		.ascii	"MyIsrUartRX\000"
+ 912      72556172 
+ 912      74525800 
+ 913              	.LASF1:
+ 914 00be 756E7369 		.ascii	"unsigned char\000"
+ 914      676E6564 
+ 914      20636861 
+ 914      7200
+ 915              	.LASF26:
+ 916 00cc 636C6B5F 		.ascii	"clk_flag\000"
+ 916      666C6167 
+ 916      00
+ 917              	.LASF7:
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 21
+
+
+ 918 00d5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 918      20756E73 
+ 918      69676E65 
+ 918      6420696E 
+ 918      7400
+ 919              	.LASF3:
+ 920 00e7 73686F72 		.ascii	"short unsigned int\000"
+ 920      7420756E 
+ 920      7369676E 
+ 920      65642069 
+ 920      6E7400
+ 921              	.LASF25:
+ 922 00fa 636C6B5F 		.ascii	"clk_count\000"
+ 922      636F756E 
+ 922      7400
+ 923              	.LASF31:
+ 924 0104 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 924      52784275 
+ 924      66666572 
+ 924      00
+ 925              	.LASF14:
+ 926 0111 646F7562 		.ascii	"double\000"
+ 926      6C6500
+ 927              	.LASF24:
+ 928 0118 66435745 		.ascii	"fCWEW_Isr\000"
+ 928      575F4973 
+ 928      7200
+ 929              	.LASF21:
+ 930 0122 746F6767 		.ascii	"toggleLED\000"
+ 930      6C654C45 
+ 930      4400
+ 931              	.LASF22:
+ 932 012c 6D61696E 		.ascii	"main\000"
+ 932      00
+ 933              	.LASF10:
+ 934 0131 756E7369 		.ascii	"unsigned int\000"
+ 934      676E6564 
+ 934      20696E74 
+ 934      00
+ 935              	.LASF29:
+ 936 013e 443A5C44 		.ascii	"D:\\Dokumente\\Programming\\Uni\\Semester-3\\MPS\\m"
+ 936      6F6B756D 
+ 936      656E7465 
+ 936      5C50726F 
+ 936      6772616D 
+ 937 016b 6936795F 		.ascii	"i6y_ws2122_zill-sebastian-769544\\Praktikum_3\\MPS2"
+ 937      77733231 
+ 937      32325F7A 
+ 937      696C6C2D 
+ 937      73656261 
+ 938 019c 315F5072 		.ascii	"1_Prakt_3.cydsn\000"
+ 938      616B745F 
+ 938      332E6379 
+ 938      64736E00 
+ 939              	.LASF9:
+ 940 01ac 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 940      206C6F6E 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccN7LQnq.s 			page 22
+
+
+ 940      6720756E 
+ 940      7369676E 
+ 940      65642069 
+ 941              	.LASF11:
+ 942 01c3 75696E74 		.ascii	"uint8_t\000"
+ 942      385F7400 
+ 943              	.LASF12:
+ 944 01cb 696E7433 		.ascii	"int32_t\000"
+ 944      325F7400 
+ 945              	.LASF17:
+ 946 01d3 73697A65 		.ascii	"sizetype\000"
+ 946      74797065 
+ 946      00
+ 947              	.LASF8:
+ 948 01dc 6C6F6E67 		.ascii	"long long int\000"
+ 948      206C6F6E 
+ 948      6720696E 
+ 948      7400
+ 949              	.LASF28:
+ 950 01ea 6D61696E 		.ascii	"main.c\000"
+ 950      2E6300
+ 951              	.LASF15:
+ 952 01f1 63686172 		.ascii	"char\000"
+ 952      00
+ 953              	.LASF2:
+ 954 01f6 73686F72 		.ascii	"short int\000"
+ 954      7420696E 
+ 954      7400
+ 955              	.LASF23:
+ 956 0200 62756666 		.ascii	"buffer\000"
+ 956      657200
+ 957              	.LASF19:
+ 958 0207 4D794973 		.ascii	"MyIsrCWEW\000"
+ 958      72435745 
+ 958      5700
+ 959              	.LASF6:
+ 960 0211 6C6F6E67 		.ascii	"long int\000"
+ 960      20696E74 
+ 960      00
+ 961              	.LASF16:
+ 962 021a 6C6F6E67 		.ascii	"long double\000"
+ 962      20646F75 
+ 962      626C6500 
+ 963              	.LASF0:
+ 964 0226 7369676E 		.ascii	"signed char\000"
+ 964      65642063 
+ 964      68617200 
+ 965              	.LASF30:
+ 966 0232 64776F72 		.ascii	"dword\000"
+ 966      6400
+ 967              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

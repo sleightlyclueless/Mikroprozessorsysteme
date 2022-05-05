@@ -1,0 +1,6 @@
+D:\Dokumente\Programming\Uni\Semester-3\MPS\mi6y_ws2122_zill-sebastian-769544\Praktikum_3\MPS21_Prakt_3.cydsn\MPS21_Prakt_3.cyprj|02e1656c-f478-42f5-a744-a6a69ca36284
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|eed2a523-e1b6-4285-b2f4-db29b5c9aee4
+C:\Users\seppi\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|7640af94-6c9e-475b-ac93-02a86c31391d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|cad7635f-71c6-4e63-9ae5-741604c26974
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|717d1ee5-2cc3-4d1f-83fe-526e106e58f4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f66a8e7c-872b-4854-99f1-df3f6b74d3e1

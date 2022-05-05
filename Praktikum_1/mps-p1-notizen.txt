@@ -1,0 +1,21 @@
+unsigned integer feste bitlänge - Prozessoren teilweise unterschiedliche Bit Länge
+(64bit / 32bit system etc.) deswegen feste länge vorgeben
+
+little endian: most significant bit an kleinster stelle
+big endian: most significant bit an größter stelle
+
+embedded - warum nicht rekursiv?: Der Stackpointer wächst immer weiter.
+32 Funktionsaufrufe heißt 32 mal die Variablen auf Stack pushen
+
+feix binary: funktion iteriert rückwärts über alle bits most zu least significant
+dann verunded mit 1 als maske (nur rechtestes bit zeigen)
+
+character immer mit \0 beenden
+Warum sind booleans immer ein Byte??
+
+getc ist immer nicht blockierend. KEINE EINGABE IST EINE 0!
+
+alles was in a angegeben wird wird in a eingesetzt - makro übergibt nicht punkt vor strich
+define MULT(a,b) (a)*(b)
+
+

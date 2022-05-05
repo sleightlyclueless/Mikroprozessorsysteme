@@ -1,0 +1,1309 @@
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.startup.main,"ax",%progbits
+  20              		.align	1
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright R. Mayer, h_da, FbI, 2020
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdio.h>      // für string-Operationen wie sprintf
+  14:main.c        **** 
+  15:main.c        **** /*
+  16:main.c        ****  * Diese Definitionen ermöglichen es, 
+  17:main.c        ****  * einfach Compiler-Informationen und andere auf den Bildschirm zu schreiben
+  18:main.c        ****  */
+  19:main.c        **** #define _VERSION_NR     "ver. 1.0"      //!< Version number. Please update
+  20:main.c        **** #define _PROJECT_NAME   "MPS21_Prakt_2" //!< Project name
+  21:main.c        **** #define _PROCESSOR      "PSoC 5LP"      //!< Processor type
+  22:main.c        **** #define _DEVICE_NAME    "FreeSoC2"      //!< Board or device type
+  23:main.c        **** #define _AUTHOR_        "Marge Rite, Peter Silie" //!< Ihr(e) Name(n)!
+  24:main.c        **** #define _COMPANY        "FbI Template MPS"
+  25:main.c        **** #define _MENU_          "Instructions: \n\r Press x to quit! \n\r Press g to toggle green light \n\
+  26:main.c        **** 
+  27:main.c        **** // String für die Anzeige zusammenbauen
+  28:main.c        **** #define _VERSTR_       (_PROJECT_NAME", "_DEVICE_NAME", "_PROCESSOR", "_VERSION_NR"\n\r"\
+  29:main.c        **** _AUTHOR_" ("_COMPANY"), "__DATE__" "__TIME__)
+  30:main.c        **** 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 2
+
+
+  31:main.c        **** /* Macros for I/O */
+  32:main.c        **** #define LED_ON  (0u)                //!< LED on (active low)
+  33:main.c        **** #define LED_OFF (1u)                //!< LED off (active low)
+  34:main.c        **** 
+  35:main.c        **** /* 
+  36:main.c        ****  * String Buffer für Anzeige am Bildschirm anlegen.
+  37:main.c        ****  * Auf die maximale Größe achten!
+  38:main.c        ****  */
+  39:main.c        **** #define BUFFER_SIZE 128             //!< string output buffer size for sprintf
+  40:main.c        **** static char buffer[BUFFER_SIZE];    //!< buffer (global) for sprintf
+  41:main.c        **** 
+  42:main.c        **** /**
+  43:main.c        ****  * Template-Projekt 1_1 mit UART ohne Interrupt. 
+  44:main.c        ****  * für FreeSoC2. Muss nach Aufgabenstellung erweitert werden.
+  45:main.c        ****  * 
+  46:main.c        ****  * @author Ralf S. Mayer
+  47:main.c        ****  * @date 2020-08-23
+  48:main.c        ****  * @version 1.0
+  49:main.c        ****  */
+  50:main.c        **** int main(void)
+  51:main.c        **** {
+  28              		.loc 1 51 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  52:main.c        ****     /* Initialisierung */
+  53:main.c        ****     UART_Start();                       // start UART
+  36              		.loc 1 53 0
+  37 0002 FFF7FEFF 		bl	UART_Start
+  38              	.LVL0:
+  54:main.c        **** 
+  55:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  39              		.loc 1 55 0
+  40              		.syntax unified
+  41              	@ 55 "main.c" 1
+  42 0006 62B6     		CPSIE   i
+  43              	@ 0 "" 2
+  56:main.c        **** 
+  57:main.c        ****     /* Welcome and info text Ausgabe */
+  58:main.c        ****     sprintf( buffer, "\n\rWelcome! %s\n\r %s", _VERSTR_, _MENU_);  // formatiert in Buffer
+  44              		.loc 1 58 0
+  45              		.thumb
+  46              		.syntax unified
+  47 0008 2B4B     		ldr	r3, .L27
+  48 000a 2C4A     		ldr	r2, .L27+4
+  49 000c 2C49     		ldr	r1, .L27+8
+  50 000e 2D48     		ldr	r0, .L27+12
+  51 0010 FFF7FEFF 		bl	sprintf
+  52              	.LVL1:
+  59:main.c        ****     UART_PutString( buffer );                           // Ausgabe auf UART
+  53              		.loc 1 59 0
+  54 0014 2B48     		ldr	r0, .L27+12
+  55 0016 FFF7FEFF 		bl	UART_PutString
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 3
+
+
+  56              	.LVL2:
+  57              	.L12:
+  60:main.c        ****     
+  61:main.c        ****     /* +++ Declarationen +++ */
+  62:main.c        ****     uint8_t chr = 0;                       // for char von der UART
+  63:main.c        ****     
+  64:main.c        ****     /* +++ Applikationsschleife         +++
+  65:main.c        ****        +++ wird ständig durchlaufen     +++ */
+  66:main.c        ****     for(;;)
+  67:main.c        ****     {
+  68:main.c        ****         /* +++ Character aus Uart mit Polling abfragen +++ */
+  69:main.c        ****         chr = UART_GetChar();           // fragt UART nach empfangene char ab
+  58              		.loc 1 69 0
+  59 001a FFF7FEFF 		bl	UART_GetChar
+  60              	.LVL3:
+  70:main.c        ****                                         //  = 0: wenn nichts empfangen
+  71:main.c        ****                                         // != 0: empfangenes Zeichen
+  72:main.c        ****                                         // Polling, nicht wartend
+  73:main.c        ****         // chr auswerten falls != 0
+  74:main.c        ****         if ( chr != 0 ) {               // da kam ein Zeichen ...
+  61              		.loc 1 74 0
+  62 001e 0246     		mov	r2, r0
+  63 0020 0028     		cmp	r0, #0
+  64 0022 32D0     		beq	.L3
+  75:main.c        ****             if (chr == 'x') {
+  65              		.loc 1 75 0
+  66 0024 7828     		cmp	r0, #120
+  67 0026 41D0     		beq	.L21
+  76:main.c        ****                 UART_PutString( "... Bye! \n\r" );
+  77:main.c        ****                 break;
+  78:main.c        ****             }
+  79:main.c        ****             
+  80:main.c        ****             // ein kleines Menu ... 
+  81:main.c        ****             switch (chr) {              // Zeichen auswerten
+  68              		.loc 1 81 0
+  69 0028 7228     		cmp	r0, #114
+  70 002a 1BD0     		beq	.L6
+  71 002c 7928     		cmp	r0, #121
+  72 002e 0DD0     		beq	.L7
+  73 0030 6728     		cmp	r0, #103
+  74 0032 23D1     		bne	.L20
+  82:main.c        ****                 case 'x':               // 'x' auswerten
+  83:main.c        ****                     UART_PutString( "... Bye! \n\r" );
+  84:main.c        ****                     break;
+  85:main.c        ****                 case 'g':               // 'g' auswerten
+  86:main.c        ****                     UART_PutString( "Green light toggled! \n\r" );
+  75              		.loc 1 86 0
+  76 0034 2448     		ldr	r0, .L27+16
+  77              	.LVL4:
+  78 0036 FFF7FEFF 		bl	UART_PutString
+  79              	.LVL5:
+  87:main.c        ****                     if (Pin_N_G_Read() == LED_OFF)
+  80              		.loc 1 87 0
+  81 003a FFF7FEFF 		bl	Pin_N_G_Read
+  82              	.LVL6:
+  83 003e 0128     		cmp	r0, #1
+  88:main.c        ****                         Pin_N_G_Write( LED_ON );
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 4
+
+
+  84              		.loc 1 88 0
+  85 0040 0CBF     		ite	eq
+  86 0042 0020     		moveq	r0, #0
+  89:main.c        ****                     else
+  90:main.c        ****                         Pin_N_G_Write( LED_OFF );
+  87              		.loc 1 90 0
+  88 0044 0120     		movne	r0, #1
+  89 0046 FFF7FEFF 		bl	Pin_N_G_Write
+  90              	.LVL7:
+  91 004a 1EE0     		b	.L3
+  92              	.LVL8:
+  93              	.L7:
+  91:main.c        ****                     break;
+  92:main.c        ****                 case 'y':               // 'g' auswerten
+  93:main.c        ****                     UART_PutString( "Yellow light toggled! \n\r" );
+  94              		.loc 1 93 0
+  95 004c 1F48     		ldr	r0, .L27+20
+  96              	.LVL9:
+  97 004e FFF7FEFF 		bl	UART_PutString
+  98              	.LVL10:
+  94:main.c        ****                     if (Pin_N_Y_Read() == LED_OFF)
+  99              		.loc 1 94 0
+ 100 0052 FFF7FEFF 		bl	Pin_N_Y_Read
+ 101              	.LVL11:
+ 102 0056 0128     		cmp	r0, #1
+  95:main.c        ****                         Pin_N_Y_Write( LED_ON );
+ 103              		.loc 1 95 0
+ 104 0058 0CBF     		ite	eq
+ 105 005a 0020     		moveq	r0, #0
+  96:main.c        ****                     else
+  97:main.c        ****                         Pin_N_Y_Write( LED_OFF );
+ 106              		.loc 1 97 0
+ 107 005c 0120     		movne	r0, #1
+ 108 005e FFF7FEFF 		bl	Pin_N_Y_Write
+ 109              	.LVL12:
+ 110 0062 12E0     		b	.L3
+ 111              	.LVL13:
+ 112              	.L6:
+  98:main.c        ****                     break;
+  99:main.c        ****                 case 'r':               // 'g' auswerten
+ 100:main.c        ****                     UART_PutString( "Red light toggled! \n\r" );
+ 113              		.loc 1 100 0
+ 114 0064 1A48     		ldr	r0, .L27+24
+ 115              	.LVL14:
+ 116 0066 FFF7FEFF 		bl	UART_PutString
+ 117              	.LVL15:
+ 101:main.c        ****                     if (Pin_N_R_Read() == LED_OFF)
+ 118              		.loc 1 101 0
+ 119 006a FFF7FEFF 		bl	Pin_N_R_Read
+ 120              	.LVL16:
+ 121 006e 0128     		cmp	r0, #1
+ 102:main.c        ****                         Pin_N_R_Write( LED_ON );
+ 122              		.loc 1 102 0
+ 123 0070 0CBF     		ite	eq
+ 124 0072 0020     		moveq	r0, #0
+ 103:main.c        ****                     else
+ 104:main.c        ****                         Pin_N_R_Write( LED_OFF );
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 5
+
+
+ 125              		.loc 1 104 0
+ 126 0074 0120     		movne	r0, #1
+ 127 0076 FFF7FEFF 		bl	Pin_N_R_Write
+ 128              	.LVL17:
+ 129 007a 06E0     		b	.L3
+ 130              	.LVL18:
+ 131              	.L20:
+ 105:main.c        ****                     break;
+ 106:main.c        ****                 default:
+ 107:main.c        ****                     sprintf( buffer, "erwarte ein <x>, aber <%c> wurde eingegeben\n\r", chr );
+ 132              		.loc 1 107 0
+ 133 007c 1549     		ldr	r1, .L27+28
+ 134 007e 1148     		ldr	r0, .L27+12
+ 135              	.LVL19:
+ 136 0080 FFF7FEFF 		bl	sprintf
+ 137              	.LVL20:
+ 108:main.c        ****                     UART_PutString( buffer );
+ 138              		.loc 1 108 0
+ 139 0084 0F48     		ldr	r0, .L27+12
+ 140 0086 FFF7FEFF 		bl	UART_PutString
+ 141              	.LVL21:
+ 142              	.L3:
+ 109:main.c        ****                     break;
+ 110:main.c        ****             } // end switch
+ 111:main.c        ****             chr = 0;                    // nicht vergessen mit ISR
+ 112:main.c        ****         }
+ 113:main.c        ****         
+ 114:main.c        ****         /* +++ Taste CWEW abfragen +++ */
+ 115:main.c        ****         // Knopf entprellen
+ 116:main.c        ****         if ( Pin_CWEW_Read() == 0 ) {   // warum auf 0 abfragen?
+ 143              		.loc 1 116 0
+ 144 008a FFF7FEFF 		bl	Pin_CWEW_Read
+ 145              	.LVL22:
+ 146 008e 0446     		mov	r4, r0
+ 147 0090 0028     		cmp	r0, #0
+ 148 0092 C2D1     		bne	.L12
+ 117:main.c        ****             if (Pin_E_CW_Read() == LED_OFF)
+ 149              		.loc 1 117 0
+ 150 0094 FFF7FEFF 		bl	Pin_E_CW_Read
+ 151              	.LVL23:
+ 152 0098 0128     		cmp	r0, #1
+ 118:main.c        ****             {
+ 119:main.c        ****                 Pin_E_CW_Write( LED_ON );
+ 153              		.loc 1 119 0
+ 154 009a 0CBF     		ite	eq
+ 155 009c 2046     		moveq	r0, r4
+ 120:main.c        ****                 CyDelay(100);
+ 121:main.c        ****             }
+ 122:main.c        ****             else {
+ 123:main.c        ****               Pin_E_CW_Write( LED_OFF );
+ 156              		.loc 1 123 0
+ 157 009e 0120     		movne	r0, #1
+ 158 00a0 FFF7FEFF 		bl	Pin_E_CW_Write
+ 159              	.LVL24:
+ 124:main.c        ****                 CyDelay(100);
+ 160              		.loc 1 124 0
+ 161 00a4 6420     		movs	r0, #100
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 6
+
+
+ 162 00a6 FFF7FEFF 		bl	CyDelay
+ 163              	.LVL25:
+ 164 00aa B6E7     		b	.L12
+ 165              	.LVL26:
+ 166              	.L21:
+  76:main.c        ****                 break;
+ 167              		.loc 1 76 0
+ 168 00ac 0A48     		ldr	r0, .L27+32
+ 169              	.LVL27:
+ 170 00ae FFF7FEFF 		bl	UART_PutString
+ 171              	.LVL28:
+ 125:main.c        ****             }
+ 126:main.c        ****                 
+ 127:main.c        ****         }  
+ 128:main.c        ****       
+ 129:main.c        **** 
+ 130:main.c        ****         /* +++ LED blinken lassen, warten mit Schleife +++ */
+ 131:main.c        ****         // für Teilaufgabe 6 Kommentare entfernen
+ 132:main.c        ****         // Testen mit DEBUG und RELEASE
+ 133:main.c        **** //        volatile uint32_t loop;                  // geht mit DEBUG, aber nicht mit RELEASE
+ 134:main.c        **** ////                                        // warum??? 
+ 135:main.c        **** ////                                        // Frage, was macht 'volatile'?
+ 136:main.c        **** //        Pin_N_R_Write( LED_ON );        // anschalten
+ 137:main.c        **** //        for ( loop = 0; loop < 1000000; loop++ )    // warten mit Schleife
+ 138:main.c        **** //            ;
+ 139:main.c        **** //        Pin_N_R_Write( LED_OFF );       // ausschalten
+ 140:main.c        **** //        for ( loop = 0; loop < 1000000; loop++ )    // warten mit Schleife
+ 141:main.c        **** //            ;
+ 142:main.c        ****         
+ 143:main.c        ****     } // end for
+ 144:main.c        ****     
+ 145:main.c        **** } // end main
+ 172              		.loc 1 145 0
+ 173 00b2 0020     		movs	r0, #0
+ 174 00b4 10BD     		pop	{r4, pc}
+ 175              	.L28:
+ 176 00b6 00BF     		.align	2
+ 177              	.L27:
+ 178 00b8 00000000 		.word	.LC0
+ 179 00bc CD000000 		.word	.LC1
+ 180 00c0 3B010000 		.word	.LC2
+ 181 00c4 00000000 		.word	.LANCHOR0
+ 182 00c8 5A010000 		.word	.LC4
+ 183 00cc 72010000 		.word	.LC5
+ 184 00d0 8B010000 		.word	.LC6
+ 185 00d4 A1010000 		.word	.LC7
+ 186 00d8 4E010000 		.word	.LC3
+ 187              		.cfi_endproc
+ 188              	.LFE64:
+ 189              		.size	main, .-main
+ 190              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 191              	.LC0:
+ 192 0000 496E7374 		.ascii	"Instructions: \012\015 Press x to quit! \012\015 Pr"
+ 192      72756374 
+ 192      696F6E73 
+ 192      3A200A0D 
+ 192      20507265 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 7
+
+
+ 193 0027 65737320 		.ascii	"ess g to toggle green light \012\015 Press y to tog"
+ 193      6720746F 
+ 193      20746F67 
+ 193      676C6520 
+ 193      67726565 
+ 194 0054 676C6520 		.ascii	"gle yellow light \012\015 Press r to toggle red lig"
+ 194      79656C6C 
+ 194      6F77206C 
+ 194      69676874 
+ 194      200A0D20 
+ 195 0081 6874200A 		.ascii	"ht \012\015 Press Button all the way on the bottom "
+ 195      0D205072 
+ 195      65737320 
+ 195      42757474 
+ 195      6F6E2061 
+ 196 00ae 72696768 		.ascii	"right to toggle white light \012\015\000"
+ 196      7420746F 
+ 196      20746F67 
+ 196      676C6520 
+ 196      77686974 
+ 197              	.LC1:
+ 198 00cd 4D505332 		.ascii	"MPS21_Prakt_2, FreeSoC2, PSoC 5LP, ver. 1.0\012\015"
+ 198      315F5072 
+ 198      616B745F 
+ 198      322C2046 
+ 198      72656553 
+ 199 00fa 4D617267 		.ascii	"Marge Rite, Peter Silie (FbI Template MPS), Nov 10 "
+ 199      65205269 
+ 199      74652C20 
+ 199      50657465 
+ 199      72205369 
+ 200 012d 32303231 		.ascii	"2021 19:09:16\000"
+ 200      2031393A 
+ 200      30393A31 
+ 200      3600
+ 201              	.LC2:
+ 202 013b 0A0D5765 		.ascii	"\012\015Welcome! %s\012\015 %s\000"
+ 202      6C636F6D 
+ 202      65212025 
+ 202      730A0D20 
+ 202      257300
+ 203              	.LC3:
+ 204 014e 2E2E2E20 		.ascii	"... Bye! \012\015\000"
+ 204      42796521 
+ 204      200A0D00 
+ 205              	.LC4:
+ 206 015a 47726565 		.ascii	"Green light toggled! \012\015\000"
+ 206      6E206C69 
+ 206      67687420 
+ 206      746F6767 
+ 206      6C656421 
+ 207              	.LC5:
+ 208 0172 59656C6C 		.ascii	"Yellow light toggled! \012\015\000"
+ 208      6F77206C 
+ 208      69676874 
+ 208      20746F67 
+ 208      676C6564 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 8
+
+
+ 209              	.LC6:
+ 210 018b 52656420 		.ascii	"Red light toggled! \012\015\000"
+ 210      6C696768 
+ 210      7420746F 
+ 210      67676C65 
+ 210      6421200A 
+ 211              	.LC7:
+ 212 01a1 65727761 		.ascii	"erwarte ein <x>, aber <%c> wurde eingegeben\012\015"
+ 212      72746520 
+ 212      65696E20 
+ 212      3C783E2C 
+ 212      20616265 
+ 213 01ce 00       		.ascii	"\000"
+ 214              		.bss
+ 215              		.set	.LANCHOR0,. + 0
+ 216              		.type	buffer, %object
+ 217              		.size	buffer, 128
+ 218              	buffer:
+ 219 0000 00000000 		.space	128
+ 219      00000000 
+ 219      00000000 
+ 219      00000000 
+ 219      00000000 
+ 220              		.text
+ 221              	.Letext0:
+ 222              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 223              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 224              		.file 4 "Generated_Source\\PSoC5/UART.h"
+ 225              		.file 5 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 226              		.file 6 "Generated_Source\\PSoC5/Pin_N_G.h"
+ 227              		.file 7 "Generated_Source\\PSoC5/Pin_N_Y.h"
+ 228              		.file 8 "Generated_Source\\PSoC5/Pin_N_R.h"
+ 229              		.file 9 "Generated_Source\\PSoC5/Pin_CWEW.h"
+ 230              		.file 10 "Generated_Source\\PSoC5/Pin_E_CW.h"
+ 231              		.file 11 "Generated_Source\\PSoC5/CyLib.h"
+ 232              		.file 12 "Generated_Source\\PSoC5/core_cm3.h"
+ 233              		.section	.debug_info,"",%progbits
+ 234              	.Ldebug_info0:
+ 235 0000 FB020000 		.4byte	0x2fb
+ 236 0004 0400     		.2byte	0x4
+ 237 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 238 000a 04       		.byte	0x4
+ 239 000b 01       		.uleb128 0x1
+ 240 000c C3010000 		.4byte	.LASF33
+ 241 0010 0C       		.byte	0xc
+ 242 0011 1D010000 		.4byte	.LASF34
+ 243 0015 47010000 		.4byte	.LASF35
+ 244 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 245 001d 00000000 		.4byte	0
+ 246 0021 00000000 		.4byte	.Ldebug_line0
+ 247 0025 02       		.uleb128 0x2
+ 248 0026 01       		.byte	0x1
+ 249 0027 06       		.byte	0x6
+ 250 0028 66020000 		.4byte	.LASF0
+ 251 002c 03       		.uleb128 0x3
+ 252 002d 00000000 		.4byte	.LASF4
+ 253 0031 02       		.byte	0x2
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 9
+
+
+ 254 0032 1D       		.byte	0x1d
+ 255 0033 37000000 		.4byte	0x37
+ 256 0037 02       		.uleb128 0x2
+ 257 0038 01       		.byte	0x1
+ 258 0039 08       		.byte	0x8
+ 259 003a 51000000 		.4byte	.LASF1
+ 260 003e 02       		.uleb128 0x2
+ 261 003f 02       		.byte	0x2
+ 262 0040 05       		.byte	0x5
+ 263 0041 36010000 		.4byte	.LASF2
+ 264 0045 02       		.uleb128 0x2
+ 265 0046 02       		.byte	0x2
+ 266 0047 07       		.byte	0x7
+ 267 0048 71000000 		.4byte	.LASF3
+ 268 004c 03       		.uleb128 0x3
+ 269 004d 26000000 		.4byte	.LASF5
+ 270 0051 02       		.byte	0x2
+ 271 0052 3F       		.byte	0x3f
+ 272 0053 57000000 		.4byte	0x57
+ 273 0057 02       		.uleb128 0x2
+ 274 0058 04       		.byte	0x4
+ 275 0059 05       		.byte	0x5
+ 276 005a 51020000 		.4byte	.LASF6
+ 277 005e 02       		.uleb128 0x2
+ 278 005f 04       		.byte	0x4
+ 279 0060 07       		.byte	0x7
+ 280 0061 5F000000 		.4byte	.LASF7
+ 281 0065 02       		.uleb128 0x2
+ 282 0066 08       		.byte	0x8
+ 283 0067 05       		.byte	0x5
+ 284 0068 0F010000 		.4byte	.LASF8
+ 285 006c 02       		.uleb128 0x2
+ 286 006d 08       		.byte	0x8
+ 287 006e 07       		.byte	0x7
+ 288 006f C2000000 		.4byte	.LASF9
+ 289 0073 04       		.uleb128 0x4
+ 290 0074 04       		.byte	0x4
+ 291 0075 05       		.byte	0x5
+ 292 0076 696E7400 		.ascii	"int\000"
+ 293 007a 02       		.uleb128 0x2
+ 294 007b 04       		.byte	0x4
+ 295 007c 07       		.byte	0x7
+ 296 007d B5000000 		.4byte	.LASF10
+ 297 0081 03       		.uleb128 0x3
+ 298 0082 D9000000 		.4byte	.LASF11
+ 299 0086 03       		.byte	0x3
+ 300 0087 18       		.byte	0x18
+ 301 0088 2C000000 		.4byte	0x2c
+ 302 008c 03       		.uleb128 0x3
+ 303 008d FE000000 		.4byte	.LASF12
+ 304 0091 03       		.byte	0x3
+ 305 0092 2C       		.byte	0x2c
+ 306 0093 4C000000 		.4byte	0x4c
+ 307 0097 02       		.uleb128 0x2
+ 308 0098 04       		.byte	0x4
+ 309 0099 04       		.byte	0x4
+ 310 009a 4B000000 		.4byte	.LASF13
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 10
+
+
+ 311 009e 02       		.uleb128 0x2
+ 312 009f 08       		.byte	0x8
+ 313 00a0 04       		.byte	0x4
+ 314 00a1 9C000000 		.4byte	.LASF14
+ 315 00a5 02       		.uleb128 0x2
+ 316 00a6 01       		.byte	0x1
+ 317 00a7 08       		.byte	0x8
+ 318 00a8 24010000 		.4byte	.LASF15
+ 319 00ac 02       		.uleb128 0x2
+ 320 00ad 08       		.byte	0x8
+ 321 00ae 04       		.byte	0x4
+ 322 00af 5A020000 		.4byte	.LASF16
+ 323 00b3 02       		.uleb128 0x2
+ 324 00b4 04       		.byte	0x4
+ 325 00b5 07       		.byte	0x7
+ 326 00b6 06010000 		.4byte	.LASF17
+ 327 00ba 05       		.uleb128 0x5
+ 328 00bb A3000000 		.4byte	.LASF36
+ 329 00bf 01       		.byte	0x1
+ 330 00c0 32       		.byte	0x32
+ 331 00c1 73000000 		.4byte	0x73
+ 332 00c5 00000000 		.4byte	.LFB64
+ 333 00c9 DC000000 		.4byte	.LFE64-.LFB64
+ 334 00cd 01       		.uleb128 0x1
+ 335 00ce 9C       		.byte	0x9c
+ 336 00cf 32020000 		.4byte	0x232
+ 337 00d3 06       		.uleb128 0x6
+ 338 00d4 63687200 		.ascii	"chr\000"
+ 339 00d8 01       		.byte	0x1
+ 340 00d9 3E       		.byte	0x3e
+ 341 00da 81000000 		.4byte	0x81
+ 342 00de 00000000 		.4byte	.LLST0
+ 343 00e2 07       		.uleb128 0x7
+ 344 00e3 06000000 		.4byte	.LVL0
+ 345 00e7 64020000 		.4byte	0x264
+ 346 00eb 08       		.uleb128 0x8
+ 347 00ec 14000000 		.4byte	.LVL1
+ 348 00f0 6F020000 		.4byte	0x26f
+ 349 00f4 1D010000 		.4byte	0x11d
+ 350 00f8 09       		.uleb128 0x9
+ 351 00f9 01       		.uleb128 0x1
+ 352 00fa 50       		.byte	0x50
+ 353 00fb 05       		.uleb128 0x5
+ 354 00fc 03       		.byte	0x3
+ 355 00fd 00000000 		.4byte	.LANCHOR0
+ 356 0101 09       		.uleb128 0x9
+ 357 0102 01       		.uleb128 0x1
+ 358 0103 51       		.byte	0x51
+ 359 0104 05       		.uleb128 0x5
+ 360 0105 03       		.byte	0x3
+ 361 0106 3B010000 		.4byte	.LC2
+ 362 010a 09       		.uleb128 0x9
+ 363 010b 01       		.uleb128 0x1
+ 364 010c 52       		.byte	0x52
+ 365 010d 05       		.uleb128 0x5
+ 366 010e 03       		.byte	0x3
+ 367 010f CD000000 		.4byte	.LC1
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 11
+
+
+ 368 0113 09       		.uleb128 0x9
+ 369 0114 01       		.uleb128 0x1
+ 370 0115 53       		.byte	0x53
+ 371 0116 05       		.uleb128 0x5
+ 372 0117 03       		.byte	0x3
+ 373 0118 00000000 		.4byte	.LC0
+ 374 011c 00       		.byte	0
+ 375 011d 08       		.uleb128 0x8
+ 376 011e 1A000000 		.4byte	.LVL2
+ 377 0122 7A020000 		.4byte	0x27a
+ 378 0126 34010000 		.4byte	0x134
+ 379 012a 09       		.uleb128 0x9
+ 380 012b 01       		.uleb128 0x1
+ 381 012c 50       		.byte	0x50
+ 382 012d 05       		.uleb128 0x5
+ 383 012e 03       		.byte	0x3
+ 384 012f 00000000 		.4byte	.LANCHOR0
+ 385 0133 00       		.byte	0
+ 386 0134 07       		.uleb128 0x7
+ 387 0135 1E000000 		.4byte	.LVL3
+ 388 0139 85020000 		.4byte	0x285
+ 389 013d 08       		.uleb128 0x8
+ 390 013e 3A000000 		.4byte	.LVL5
+ 391 0142 7A020000 		.4byte	0x27a
+ 392 0146 54010000 		.4byte	0x154
+ 393 014a 09       		.uleb128 0x9
+ 394 014b 01       		.uleb128 0x1
+ 395 014c 50       		.byte	0x50
+ 396 014d 05       		.uleb128 0x5
+ 397 014e 03       		.byte	0x3
+ 398 014f 5A010000 		.4byte	.LC4
+ 399 0153 00       		.byte	0
+ 400 0154 07       		.uleb128 0x7
+ 401 0155 3E000000 		.4byte	.LVL6
+ 402 0159 90020000 		.4byte	0x290
+ 403 015d 07       		.uleb128 0x7
+ 404 015e 4A000000 		.4byte	.LVL7
+ 405 0162 9B020000 		.4byte	0x29b
+ 406 0166 08       		.uleb128 0x8
+ 407 0167 52000000 		.4byte	.LVL10
+ 408 016b 7A020000 		.4byte	0x27a
+ 409 016f 7D010000 		.4byte	0x17d
+ 410 0173 09       		.uleb128 0x9
+ 411 0174 01       		.uleb128 0x1
+ 412 0175 50       		.byte	0x50
+ 413 0176 05       		.uleb128 0x5
+ 414 0177 03       		.byte	0x3
+ 415 0178 72010000 		.4byte	.LC5
+ 416 017c 00       		.byte	0
+ 417 017d 07       		.uleb128 0x7
+ 418 017e 56000000 		.4byte	.LVL11
+ 419 0182 A6020000 		.4byte	0x2a6
+ 420 0186 07       		.uleb128 0x7
+ 421 0187 62000000 		.4byte	.LVL12
+ 422 018b B1020000 		.4byte	0x2b1
+ 423 018f 08       		.uleb128 0x8
+ 424 0190 6A000000 		.4byte	.LVL15
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 12
+
+
+ 425 0194 7A020000 		.4byte	0x27a
+ 426 0198 A6010000 		.4byte	0x1a6
+ 427 019c 09       		.uleb128 0x9
+ 428 019d 01       		.uleb128 0x1
+ 429 019e 50       		.byte	0x50
+ 430 019f 05       		.uleb128 0x5
+ 431 01a0 03       		.byte	0x3
+ 432 01a1 8B010000 		.4byte	.LC6
+ 433 01a5 00       		.byte	0
+ 434 01a6 07       		.uleb128 0x7
+ 435 01a7 6E000000 		.4byte	.LVL16
+ 436 01ab BC020000 		.4byte	0x2bc
+ 437 01af 07       		.uleb128 0x7
+ 438 01b0 7A000000 		.4byte	.LVL17
+ 439 01b4 C7020000 		.4byte	0x2c7
+ 440 01b8 08       		.uleb128 0x8
+ 441 01b9 84000000 		.4byte	.LVL20
+ 442 01bd 6F020000 		.4byte	0x26f
+ 443 01c1 D8010000 		.4byte	0x1d8
+ 444 01c5 09       		.uleb128 0x9
+ 445 01c6 01       		.uleb128 0x1
+ 446 01c7 50       		.byte	0x50
+ 447 01c8 05       		.uleb128 0x5
+ 448 01c9 03       		.byte	0x3
+ 449 01ca 00000000 		.4byte	.LANCHOR0
+ 450 01ce 09       		.uleb128 0x9
+ 451 01cf 01       		.uleb128 0x1
+ 452 01d0 51       		.byte	0x51
+ 453 01d1 05       		.uleb128 0x5
+ 454 01d2 03       		.byte	0x3
+ 455 01d3 A1010000 		.4byte	.LC7
+ 456 01d7 00       		.byte	0
+ 457 01d8 08       		.uleb128 0x8
+ 458 01d9 8A000000 		.4byte	.LVL21
+ 459 01dd 7A020000 		.4byte	0x27a
+ 460 01e1 EF010000 		.4byte	0x1ef
+ 461 01e5 09       		.uleb128 0x9
+ 462 01e6 01       		.uleb128 0x1
+ 463 01e7 50       		.byte	0x50
+ 464 01e8 05       		.uleb128 0x5
+ 465 01e9 03       		.byte	0x3
+ 466 01ea 00000000 		.4byte	.LANCHOR0
+ 467 01ee 00       		.byte	0
+ 468 01ef 07       		.uleb128 0x7
+ 469 01f0 8E000000 		.4byte	.LVL22
+ 470 01f4 D2020000 		.4byte	0x2d2
+ 471 01f8 07       		.uleb128 0x7
+ 472 01f9 98000000 		.4byte	.LVL23
+ 473 01fd DD020000 		.4byte	0x2dd
+ 474 0201 07       		.uleb128 0x7
+ 475 0202 A4000000 		.4byte	.LVL24
+ 476 0206 E8020000 		.4byte	0x2e8
+ 477 020a 08       		.uleb128 0x8
+ 478 020b AA000000 		.4byte	.LVL25
+ 479 020f F3020000 		.4byte	0x2f3
+ 480 0213 1E020000 		.4byte	0x21e
+ 481 0217 09       		.uleb128 0x9
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 13
+
+
+ 482 0218 01       		.uleb128 0x1
+ 483 0219 50       		.byte	0x50
+ 484 021a 02       		.uleb128 0x2
+ 485 021b 08       		.byte	0x8
+ 486 021c 64       		.byte	0x64
+ 487 021d 00       		.byte	0
+ 488 021e 0A       		.uleb128 0xa
+ 489 021f B2000000 		.4byte	.LVL28
+ 490 0223 7A020000 		.4byte	0x27a
+ 491 0227 09       		.uleb128 0x9
+ 492 0228 01       		.uleb128 0x1
+ 493 0229 50       		.byte	0x50
+ 494 022a 05       		.uleb128 0x5
+ 495 022b 03       		.byte	0x3
+ 496 022c 4E010000 		.4byte	.LC3
+ 497 0230 00       		.byte	0
+ 498 0231 00       		.byte	0
+ 499 0232 0B       		.uleb128 0xb
+ 500 0233 A5000000 		.4byte	0xa5
+ 501 0237 42020000 		.4byte	0x242
+ 502 023b 0C       		.uleb128 0xc
+ 503 023c B3000000 		.4byte	0xb3
+ 504 0240 7F       		.byte	0x7f
+ 505 0241 00       		.byte	0
+ 506 0242 0D       		.uleb128 0xd
+ 507 0243 40010000 		.4byte	.LASF18
+ 508 0247 01       		.byte	0x1
+ 509 0248 28       		.byte	0x28
+ 510 0249 32020000 		.4byte	0x232
+ 511 024d 05       		.uleb128 0x5
+ 512 024e 03       		.byte	0x3
+ 513 024f 00000000 		.4byte	buffer
+ 514 0253 0E       		.uleb128 0xe
+ 515 0254 8F000000 		.4byte	.LASF37
+ 516 0258 0C       		.byte	0xc
+ 517 0259 1207     		.2byte	0x712
+ 518 025b 5F020000 		.4byte	0x25f
+ 519 025f 0F       		.uleb128 0xf
+ 520 0260 8C000000 		.4byte	0x8c
+ 521 0264 10       		.uleb128 0x10
+ 522 0265 84000000 		.4byte	.LASF19
+ 523 0269 84000000 		.4byte	.LASF19
+ 524 026d 04       		.byte	0x4
+ 525 026e 54       		.byte	0x54
+ 526 026f 10       		.uleb128 0x10
+ 527 0270 8E020000 		.4byte	.LASF20
+ 528 0274 8E020000 		.4byte	.LASF20
+ 529 0278 05       		.byte	0x5
+ 530 0279 E7       		.byte	0xe7
+ 531 027a 10       		.uleb128 0x10
+ 532 027b 72020000 		.4byte	.LASF21
+ 533 027f 72020000 		.4byte	.LASF21
+ 534 0283 04       		.byte	0x4
+ 535 0284 8B       		.byte	0x8b
+ 536 0285 10       		.uleb128 0x10
+ 537 0286 29010000 		.4byte	.LASF22
+ 538 028a 29010000 		.4byte	.LASF22
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 14
+
+
+ 539 028e 04       		.byte	0x4
+ 540 028f 71       		.byte	0x71
+ 541 0290 10       		.uleb128 0x10
+ 542 0291 A8000000 		.4byte	.LASF23
+ 543 0295 A8000000 		.4byte	.LASF23
+ 544 0299 06       		.byte	0x6
+ 545 029a 29       		.byte	0x29
+ 546 029b 10       		.uleb128 0x10
+ 547 029c 0A000000 		.4byte	.LASF24
+ 548 02a0 0A000000 		.4byte	.LASF24
+ 549 02a4 06       		.byte	0x6
+ 550 02a5 26       		.byte	0x26
+ 551 02a6 10       		.uleb128 0x10
+ 552 02a7 30000000 		.4byte	.LASF25
+ 553 02ab 30000000 		.4byte	.LASF25
+ 554 02af 07       		.byte	0x7
+ 555 02b0 29       		.byte	0x29
+ 556 02b1 10       		.uleb128 0x10
+ 557 02b2 3D000000 		.4byte	.LASF26
+ 558 02b6 3D000000 		.4byte	.LASF26
+ 559 02ba 07       		.byte	0x7
+ 560 02bb 26       		.byte	0x26
+ 561 02bc 10       		.uleb128 0x10
+ 562 02bd 81020000 		.4byte	.LASF27
+ 563 02c1 81020000 		.4byte	.LASF27
+ 564 02c5 08       		.byte	0x8
+ 565 02c6 29       		.byte	0x29
+ 566 02c7 10       		.uleb128 0x10
+ 567 02c8 F0000000 		.4byte	.LASF28
+ 568 02cc F0000000 		.4byte	.LASF28
+ 569 02d0 08       		.byte	0x8
+ 570 02d1 26       		.byte	0x26
+ 571 02d2 10       		.uleb128 0x10
+ 572 02d3 9E020000 		.4byte	.LASF29
+ 573 02d7 9E020000 		.4byte	.LASF29
+ 574 02db 09       		.byte	0x9
+ 575 02dc 29       		.byte	0x29
+ 576 02dd 10       		.uleb128 0x10
+ 577 02de 18000000 		.4byte	.LASF30
+ 578 02e2 18000000 		.4byte	.LASF30
+ 579 02e6 0A       		.byte	0xa
+ 580 02e7 29       		.byte	0x29
+ 581 02e8 10       		.uleb128 0x10
+ 582 02e9 E1000000 		.4byte	.LASF31
+ 583 02ed E1000000 		.4byte	.LASF31
+ 584 02f1 0A       		.byte	0xa
+ 585 02f2 26       		.byte	0x26
+ 586 02f3 10       		.uleb128 0x10
+ 587 02f4 96020000 		.4byte	.LASF32
+ 588 02f8 96020000 		.4byte	.LASF32
+ 589 02fc 0B       		.byte	0xb
+ 590 02fd 76       		.byte	0x76
+ 591 02fe 00       		.byte	0
+ 592              		.section	.debug_abbrev,"",%progbits
+ 593              	.Ldebug_abbrev0:
+ 594 0000 01       		.uleb128 0x1
+ 595 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 15
+
+
+ 596 0002 01       		.byte	0x1
+ 597 0003 25       		.uleb128 0x25
+ 598 0004 0E       		.uleb128 0xe
+ 599 0005 13       		.uleb128 0x13
+ 600 0006 0B       		.uleb128 0xb
+ 601 0007 03       		.uleb128 0x3
+ 602 0008 0E       		.uleb128 0xe
+ 603 0009 1B       		.uleb128 0x1b
+ 604 000a 0E       		.uleb128 0xe
+ 605 000b 55       		.uleb128 0x55
+ 606 000c 17       		.uleb128 0x17
+ 607 000d 11       		.uleb128 0x11
+ 608 000e 01       		.uleb128 0x1
+ 609 000f 10       		.uleb128 0x10
+ 610 0010 17       		.uleb128 0x17
+ 611 0011 00       		.byte	0
+ 612 0012 00       		.byte	0
+ 613 0013 02       		.uleb128 0x2
+ 614 0014 24       		.uleb128 0x24
+ 615 0015 00       		.byte	0
+ 616 0016 0B       		.uleb128 0xb
+ 617 0017 0B       		.uleb128 0xb
+ 618 0018 3E       		.uleb128 0x3e
+ 619 0019 0B       		.uleb128 0xb
+ 620 001a 03       		.uleb128 0x3
+ 621 001b 0E       		.uleb128 0xe
+ 622 001c 00       		.byte	0
+ 623 001d 00       		.byte	0
+ 624 001e 03       		.uleb128 0x3
+ 625 001f 16       		.uleb128 0x16
+ 626 0020 00       		.byte	0
+ 627 0021 03       		.uleb128 0x3
+ 628 0022 0E       		.uleb128 0xe
+ 629 0023 3A       		.uleb128 0x3a
+ 630 0024 0B       		.uleb128 0xb
+ 631 0025 3B       		.uleb128 0x3b
+ 632 0026 0B       		.uleb128 0xb
+ 633 0027 49       		.uleb128 0x49
+ 634 0028 13       		.uleb128 0x13
+ 635 0029 00       		.byte	0
+ 636 002a 00       		.byte	0
+ 637 002b 04       		.uleb128 0x4
+ 638 002c 24       		.uleb128 0x24
+ 639 002d 00       		.byte	0
+ 640 002e 0B       		.uleb128 0xb
+ 641 002f 0B       		.uleb128 0xb
+ 642 0030 3E       		.uleb128 0x3e
+ 643 0031 0B       		.uleb128 0xb
+ 644 0032 03       		.uleb128 0x3
+ 645 0033 08       		.uleb128 0x8
+ 646 0034 00       		.byte	0
+ 647 0035 00       		.byte	0
+ 648 0036 05       		.uleb128 0x5
+ 649 0037 2E       		.uleb128 0x2e
+ 650 0038 01       		.byte	0x1
+ 651 0039 3F       		.uleb128 0x3f
+ 652 003a 19       		.uleb128 0x19
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 16
+
+
+ 653 003b 03       		.uleb128 0x3
+ 654 003c 0E       		.uleb128 0xe
+ 655 003d 3A       		.uleb128 0x3a
+ 656 003e 0B       		.uleb128 0xb
+ 657 003f 3B       		.uleb128 0x3b
+ 658 0040 0B       		.uleb128 0xb
+ 659 0041 27       		.uleb128 0x27
+ 660 0042 19       		.uleb128 0x19
+ 661 0043 49       		.uleb128 0x49
+ 662 0044 13       		.uleb128 0x13
+ 663 0045 11       		.uleb128 0x11
+ 664 0046 01       		.uleb128 0x1
+ 665 0047 12       		.uleb128 0x12
+ 666 0048 06       		.uleb128 0x6
+ 667 0049 40       		.uleb128 0x40
+ 668 004a 18       		.uleb128 0x18
+ 669 004b 9742     		.uleb128 0x2117
+ 670 004d 19       		.uleb128 0x19
+ 671 004e 01       		.uleb128 0x1
+ 672 004f 13       		.uleb128 0x13
+ 673 0050 00       		.byte	0
+ 674 0051 00       		.byte	0
+ 675 0052 06       		.uleb128 0x6
+ 676 0053 34       		.uleb128 0x34
+ 677 0054 00       		.byte	0
+ 678 0055 03       		.uleb128 0x3
+ 679 0056 08       		.uleb128 0x8
+ 680 0057 3A       		.uleb128 0x3a
+ 681 0058 0B       		.uleb128 0xb
+ 682 0059 3B       		.uleb128 0x3b
+ 683 005a 0B       		.uleb128 0xb
+ 684 005b 49       		.uleb128 0x49
+ 685 005c 13       		.uleb128 0x13
+ 686 005d 02       		.uleb128 0x2
+ 687 005e 17       		.uleb128 0x17
+ 688 005f 00       		.byte	0
+ 689 0060 00       		.byte	0
+ 690 0061 07       		.uleb128 0x7
+ 691 0062 898201   		.uleb128 0x4109
+ 692 0065 00       		.byte	0
+ 693 0066 11       		.uleb128 0x11
+ 694 0067 01       		.uleb128 0x1
+ 695 0068 31       		.uleb128 0x31
+ 696 0069 13       		.uleb128 0x13
+ 697 006a 00       		.byte	0
+ 698 006b 00       		.byte	0
+ 699 006c 08       		.uleb128 0x8
+ 700 006d 898201   		.uleb128 0x4109
+ 701 0070 01       		.byte	0x1
+ 702 0071 11       		.uleb128 0x11
+ 703 0072 01       		.uleb128 0x1
+ 704 0073 31       		.uleb128 0x31
+ 705 0074 13       		.uleb128 0x13
+ 706 0075 01       		.uleb128 0x1
+ 707 0076 13       		.uleb128 0x13
+ 708 0077 00       		.byte	0
+ 709 0078 00       		.byte	0
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 17
+
+
+ 710 0079 09       		.uleb128 0x9
+ 711 007a 8A8201   		.uleb128 0x410a
+ 712 007d 00       		.byte	0
+ 713 007e 02       		.uleb128 0x2
+ 714 007f 18       		.uleb128 0x18
+ 715 0080 9142     		.uleb128 0x2111
+ 716 0082 18       		.uleb128 0x18
+ 717 0083 00       		.byte	0
+ 718 0084 00       		.byte	0
+ 719 0085 0A       		.uleb128 0xa
+ 720 0086 898201   		.uleb128 0x4109
+ 721 0089 01       		.byte	0x1
+ 722 008a 11       		.uleb128 0x11
+ 723 008b 01       		.uleb128 0x1
+ 724 008c 31       		.uleb128 0x31
+ 725 008d 13       		.uleb128 0x13
+ 726 008e 00       		.byte	0
+ 727 008f 00       		.byte	0
+ 728 0090 0B       		.uleb128 0xb
+ 729 0091 01       		.uleb128 0x1
+ 730 0092 01       		.byte	0x1
+ 731 0093 49       		.uleb128 0x49
+ 732 0094 13       		.uleb128 0x13
+ 733 0095 01       		.uleb128 0x1
+ 734 0096 13       		.uleb128 0x13
+ 735 0097 00       		.byte	0
+ 736 0098 00       		.byte	0
+ 737 0099 0C       		.uleb128 0xc
+ 738 009a 21       		.uleb128 0x21
+ 739 009b 00       		.byte	0
+ 740 009c 49       		.uleb128 0x49
+ 741 009d 13       		.uleb128 0x13
+ 742 009e 2F       		.uleb128 0x2f
+ 743 009f 0B       		.uleb128 0xb
+ 744 00a0 00       		.byte	0
+ 745 00a1 00       		.byte	0
+ 746 00a2 0D       		.uleb128 0xd
+ 747 00a3 34       		.uleb128 0x34
+ 748 00a4 00       		.byte	0
+ 749 00a5 03       		.uleb128 0x3
+ 750 00a6 0E       		.uleb128 0xe
+ 751 00a7 3A       		.uleb128 0x3a
+ 752 00a8 0B       		.uleb128 0xb
+ 753 00a9 3B       		.uleb128 0x3b
+ 754 00aa 0B       		.uleb128 0xb
+ 755 00ab 49       		.uleb128 0x49
+ 756 00ac 13       		.uleb128 0x13
+ 757 00ad 02       		.uleb128 0x2
+ 758 00ae 18       		.uleb128 0x18
+ 759 00af 00       		.byte	0
+ 760 00b0 00       		.byte	0
+ 761 00b1 0E       		.uleb128 0xe
+ 762 00b2 34       		.uleb128 0x34
+ 763 00b3 00       		.byte	0
+ 764 00b4 03       		.uleb128 0x3
+ 765 00b5 0E       		.uleb128 0xe
+ 766 00b6 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 18
+
+
+ 767 00b7 0B       		.uleb128 0xb
+ 768 00b8 3B       		.uleb128 0x3b
+ 769 00b9 05       		.uleb128 0x5
+ 770 00ba 49       		.uleb128 0x49
+ 771 00bb 13       		.uleb128 0x13
+ 772 00bc 3F       		.uleb128 0x3f
+ 773 00bd 19       		.uleb128 0x19
+ 774 00be 3C       		.uleb128 0x3c
+ 775 00bf 19       		.uleb128 0x19
+ 776 00c0 00       		.byte	0
+ 777 00c1 00       		.byte	0
+ 778 00c2 0F       		.uleb128 0xf
+ 779 00c3 35       		.uleb128 0x35
+ 780 00c4 00       		.byte	0
+ 781 00c5 49       		.uleb128 0x49
+ 782 00c6 13       		.uleb128 0x13
+ 783 00c7 00       		.byte	0
+ 784 00c8 00       		.byte	0
+ 785 00c9 10       		.uleb128 0x10
+ 786 00ca 2E       		.uleb128 0x2e
+ 787 00cb 00       		.byte	0
+ 788 00cc 3F       		.uleb128 0x3f
+ 789 00cd 19       		.uleb128 0x19
+ 790 00ce 3C       		.uleb128 0x3c
+ 791 00cf 19       		.uleb128 0x19
+ 792 00d0 6E       		.uleb128 0x6e
+ 793 00d1 0E       		.uleb128 0xe
+ 794 00d2 03       		.uleb128 0x3
+ 795 00d3 0E       		.uleb128 0xe
+ 796 00d4 3A       		.uleb128 0x3a
+ 797 00d5 0B       		.uleb128 0xb
+ 798 00d6 3B       		.uleb128 0x3b
+ 799 00d7 0B       		.uleb128 0xb
+ 800 00d8 00       		.byte	0
+ 801 00d9 00       		.byte	0
+ 802 00da 00       		.byte	0
+ 803              		.section	.debug_loc,"",%progbits
+ 804              	.Ldebug_loc0:
+ 805              	.LLST0:
+ 806 0000 1E000000 		.4byte	.LVL3
+ 807 0004 36000000 		.4byte	.LVL4
+ 808 0008 0100     		.2byte	0x1
+ 809 000a 50       		.byte	0x50
+ 810 000b 4C000000 		.4byte	.LVL8
+ 811 000f 4E000000 		.4byte	.LVL9
+ 812 0013 0100     		.2byte	0x1
+ 813 0015 50       		.byte	0x50
+ 814 0016 64000000 		.4byte	.LVL13
+ 815 001a 66000000 		.4byte	.LVL14
+ 816 001e 0100     		.2byte	0x1
+ 817 0020 50       		.byte	0x50
+ 818 0021 7C000000 		.4byte	.LVL18
+ 819 0025 80000000 		.4byte	.LVL19
+ 820 0029 0100     		.2byte	0x1
+ 821 002b 50       		.byte	0x50
+ 822 002c AC000000 		.4byte	.LVL26
+ 823 0030 AE000000 		.4byte	.LVL27
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 19
+
+
+ 824 0034 0100     		.2byte	0x1
+ 825 0036 50       		.byte	0x50
+ 826 0037 00000000 		.4byte	0
+ 827 003b 00000000 		.4byte	0
+ 828              		.section	.debug_aranges,"",%progbits
+ 829 0000 1C000000 		.4byte	0x1c
+ 830 0004 0200     		.2byte	0x2
+ 831 0006 00000000 		.4byte	.Ldebug_info0
+ 832 000a 04       		.byte	0x4
+ 833 000b 00       		.byte	0
+ 834 000c 0000     		.2byte	0
+ 835 000e 0000     		.2byte	0
+ 836 0010 00000000 		.4byte	.LFB64
+ 837 0014 DC000000 		.4byte	.LFE64-.LFB64
+ 838 0018 00000000 		.4byte	0
+ 839 001c 00000000 		.4byte	0
+ 840              		.section	.debug_ranges,"",%progbits
+ 841              	.Ldebug_ranges0:
+ 842 0000 00000000 		.4byte	.LFB64
+ 843 0004 DC000000 		.4byte	.LFE64
+ 844 0008 00000000 		.4byte	0
+ 845 000c 00000000 		.4byte	0
+ 846              		.section	.debug_line,"",%progbits
+ 847              	.Ldebug_line0:
+ 848 0000 43020000 		.section	.debug_str,"MS",%progbits,1
+ 848      02000A02 
+ 848      00000201 
+ 848      FB0E0D00 
+ 848      01010101 
+ 849              	.LASF4:
+ 850 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 850      6E74385F 
+ 850      7400
+ 851              	.LASF24:
+ 852 000a 50696E5F 		.ascii	"Pin_N_G_Write\000"
+ 852      4E5F475F 
+ 852      57726974 
+ 852      6500
+ 853              	.LASF30:
+ 854 0018 50696E5F 		.ascii	"Pin_E_CW_Read\000"
+ 854      455F4357 
+ 854      5F526561 
+ 854      6400
+ 855              	.LASF5:
+ 856 0026 5F5F696E 		.ascii	"__int32_t\000"
+ 856      7433325F 
+ 856      7400
+ 857              	.LASF25:
+ 858 0030 50696E5F 		.ascii	"Pin_N_Y_Read\000"
+ 858      4E5F595F 
+ 858      52656164 
+ 858      00
+ 859              	.LASF26:
+ 860 003d 50696E5F 		.ascii	"Pin_N_Y_Write\000"
+ 860      4E5F595F 
+ 860      57726974 
+ 860      6500
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 20
+
+
+ 861              	.LASF13:
+ 862 004b 666C6F61 		.ascii	"float\000"
+ 862      7400
+ 863              	.LASF1:
+ 864 0051 756E7369 		.ascii	"unsigned char\000"
+ 864      676E6564 
+ 864      20636861 
+ 864      7200
+ 865              	.LASF7:
+ 866 005f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 866      20756E73 
+ 866      69676E65 
+ 866      6420696E 
+ 866      7400
+ 867              	.LASF3:
+ 868 0071 73686F72 		.ascii	"short unsigned int\000"
+ 868      7420756E 
+ 868      7369676E 
+ 868      65642069 
+ 868      6E7400
+ 869              	.LASF19:
+ 870 0084 55415254 		.ascii	"UART_Start\000"
+ 870      5F537461 
+ 870      727400
+ 871              	.LASF37:
+ 872 008f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 872      52784275 
+ 872      66666572 
+ 872      00
+ 873              	.LASF14:
+ 874 009c 646F7562 		.ascii	"double\000"
+ 874      6C6500
+ 875              	.LASF36:
+ 876 00a3 6D61696E 		.ascii	"main\000"
+ 876      00
+ 877              	.LASF23:
+ 878 00a8 50696E5F 		.ascii	"Pin_N_G_Read\000"
+ 878      4E5F475F 
+ 878      52656164 
+ 878      00
+ 879              	.LASF10:
+ 880 00b5 756E7369 		.ascii	"unsigned int\000"
+ 880      676E6564 
+ 880      20696E74 
+ 880      00
+ 881              	.LASF9:
+ 882 00c2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 882      206C6F6E 
+ 882      6720756E 
+ 882      7369676E 
+ 882      65642069 
+ 883              	.LASF11:
+ 884 00d9 75696E74 		.ascii	"uint8_t\000"
+ 884      385F7400 
+ 885              	.LASF31:
+ 886 00e1 50696E5F 		.ascii	"Pin_E_CW_Write\000"
+ 886      455F4357 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 21
+
+
+ 886      5F577269 
+ 886      746500
+ 887              	.LASF28:
+ 888 00f0 50696E5F 		.ascii	"Pin_N_R_Write\000"
+ 888      4E5F525F 
+ 888      57726974 
+ 888      6500
+ 889              	.LASF12:
+ 890 00fe 696E7433 		.ascii	"int32_t\000"
+ 890      325F7400 
+ 891              	.LASF17:
+ 892 0106 73697A65 		.ascii	"sizetype\000"
+ 892      74797065 
+ 892      00
+ 893              	.LASF8:
+ 894 010f 6C6F6E67 		.ascii	"long long int\000"
+ 894      206C6F6E 
+ 894      6720696E 
+ 894      7400
+ 895              	.LASF34:
+ 896 011d 6D61696E 		.ascii	"main.c\000"
+ 896      2E6300
+ 897              	.LASF15:
+ 898 0124 63686172 		.ascii	"char\000"
+ 898      00
+ 899              	.LASF22:
+ 900 0129 55415254 		.ascii	"UART_GetChar\000"
+ 900      5F476574 
+ 900      43686172 
+ 900      00
+ 901              	.LASF2:
+ 902 0136 73686F72 		.ascii	"short int\000"
+ 902      7420696E 
+ 902      7400
+ 903              	.LASF18:
+ 904 0140 62756666 		.ascii	"buffer\000"
+ 904      657200
+ 905              	.LASF35:
+ 906 0147 443A5C44 		.ascii	"D:\\Dokumente\\Programming\\Uni\\Semester-3\\MPS\\m"
+ 906      6F6B756D 
+ 906      656E7465 
+ 906      5C50726F 
+ 906      6772616D 
+ 907 0174 6936795F 		.ascii	"i6y_ws2122_zill-sebastian-769544\\Praktikum_2\\MPS2"
+ 907      77733231 
+ 907      32325F7A 
+ 907      696C6C2D 
+ 907      73656261 
+ 908 01a5 315F5072 		.ascii	"1_Prakt_2\\MPS21_Prakt_2.cydsn\000"
+ 908      616B745F 
+ 908      325C4D50 
+ 908      5332315F 
+ 908      5072616B 
+ 909              	.LASF33:
+ 910 01c3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 910      43313120 
+ 910      352E342E 
+ARM GAS  C:\Users\seppi\AppData\Local\Temp\ccbb9bj9.s 			page 22
+
+
+ 910      31203230 
+ 910      31363036 
+ 911 01f6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 911      20726576 
+ 911      6973696F 
+ 911      6E203233 
+ 911      37373135 
+ 912 0229 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 912      66756E63 
+ 912      74696F6E 
+ 912      2D736563 
+ 912      74696F6E 
+ 913              	.LASF6:
+ 914 0251 6C6F6E67 		.ascii	"long int\000"
+ 914      20696E74 
+ 914      00
+ 915              	.LASF16:
+ 916 025a 6C6F6E67 		.ascii	"long double\000"
+ 916      20646F75 
+ 916      626C6500 
+ 917              	.LASF0:
+ 918 0266 7369676E 		.ascii	"signed char\000"
+ 918      65642063 
+ 918      68617200 
+ 919              	.LASF21:
+ 920 0272 55415254 		.ascii	"UART_PutString\000"
+ 920      5F507574 
+ 920      53747269 
+ 920      6E6700
+ 921              	.LASF27:
+ 922 0281 50696E5F 		.ascii	"Pin_N_R_Read\000"
+ 922      4E5F525F 
+ 922      52656164 
+ 922      00
+ 923              	.LASF20:
+ 924 028e 73707269 		.ascii	"sprintf\000"
+ 924      6E746600 
+ 925              	.LASF32:
+ 926 0296 43794465 		.ascii	"CyDelay\000"
+ 926      6C617900 
+ 927              	.LASF29:
+ 928 029e 50696E5F 		.ascii	"Pin_CWEW_Read\000"
+ 928      43574557 
+ 928      5F526561 
+ 928      6400
+ 929              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
